@@ -641,8 +641,8 @@
 
 				function animateParticles() {
 					requestAnimationFrame(animateParticles);
-					// This creates the "comet tail" effect
-					ctx.fillStyle = "rgba(10, 25, 47, 0.1)";
+					// This creates a shorter "comet tail" effect by fading previous frames faster
+					ctx.fillStyle = "rgba(10, 25, 47, 0.3)";
 					ctx.fillRect(0, 0, innerWidth, innerHeight);
 
 					for (let i = 0; i < particlesArray.length; i++) {
