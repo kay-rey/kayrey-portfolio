@@ -28,12 +28,15 @@
 
 			body {
 				font-family: "Inter", sans-serif;
-				background-color: var(--light-navy);
+				background-color: var(--dark-navy);
+				/* Updated background for top and bottom fade effect */
 				background-image: linear-gradient(
 					180deg,
 					var(--dark-navy) 0%,
-					var(--dark-navy) 85vh,
-					var(--light-navy) 115vh
+					var(--dark-navy) 70vh,
+					var(--light-navy) 100vh,
+					var(--light-navy) calc(100% - 70vh),
+					var(--dark-navy) 100%
 				);
 				color: var(--lightest-slate);
 				cursor: none; /* Hide the default cursor */
@@ -567,12 +570,24 @@
 					});
 				});
 
-				// --- Particle.js Background ---
+				// --- Interactive Particle Background ---
 				const canvas = document.getElementById("particle-canvas");
 				const ctx = canvas.getContext("2d");
 				canvas.width = window.innerWidth;
 				canvas.height = window.innerHeight;
 				let particlesArray;
+
+				// Mouse position
+				const mouse = {
+					x: null,
+					y: null,
+					radius: 100,
+				};
+
+				window.addEventListener("mousemove", (event) => {
+					mouse.x = event.x;
+					mouse.y = event.y;
+				});
 
 				class Particle {
 					constructor(x, y, directionX, directionY, size, color) {
@@ -590,14 +605,28 @@
 						ctx.fill();
 					}
 					update() {
+						// Check for wall collision
 						if (this.x > canvas.width || this.x < 0) {
 							this.directionX = -this.directionX;
 						}
 						if (this.y > canvas.height || this.y < 0) {
 							this.directionY = -this.directionY;
 						}
+
+						// Check for mouse collision
+						let dx = mouse.x - this.x;
+						let dy = mouse.y - this.y;
+						let distance = Math.sqrt(dx * dx + dy * dy);
+						if (distance < mouse.radius + this.size) {
+							// Push particle away from mouse
+							this.x -= dx / 15;
+							this.y -= dy / 15;
+						}
+
+						// Move particle
 						this.x += this.directionX;
 						this.y += this.directionY;
+
 						this.draw();
 					}
 				}
@@ -634,6 +663,7 @@
 				window.addEventListener("resize", () => {
 					canvas.width = innerWidth;
 					canvas.height = innerHeight;
+					mouse.radius = 100;
 					initParticles();
 				});
 
