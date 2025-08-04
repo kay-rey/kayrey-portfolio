@@ -145,10 +145,8 @@ While this is a personal portfolio, suggestions and feedback are welcome! Feel f
 
 ## 📞 Contact
 
-- **Email**: [your-email@example.com]
-- **LinkedIn**: [your-linkedin-url]
+
 - **GitHub**: [https://github.com/kay-rey]
-- **Portfolio**: [your-portfolio-url]
 
 ---
 
