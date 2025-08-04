@@ -4,6 +4,48 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Kevin Reyes - Software Engineer</title>
+
+		<!-- SEO Meta Tags -->
+		<meta
+			name="description"
+			content="The portfolio of Kevin Reyes, a full-stack software engineer specializing in building modern web applications with Python, JavaScript, and React."
+		/>
+		<meta
+			name="keywords"
+			content="Kevin Reyes, Software Engineer, Full Stack Developer, Python, Django, React, Portfolio"
+		/>
+		<meta name="author" content="Kevin Reyes" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://your-domain.com/" />
+		<!-- Replace with your actual domain -->
+		<meta property="og:title" content="Kevin Reyes - Software Engineer" />
+		<meta
+			property="og:description"
+			content="A full-stack software engineer specializing in building modern web applications."
+		/>
+		<meta
+			property="og:image"
+			content="https://your-domain.com/assets/koalalogo.webp"
+		/>
+		<!-- Replace with a full URL to your logo -->
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://your-domain.com/" />
+		<!-- Replace with your actual domain -->
+		<meta property="twitter:title" content="Kevin Reyes - Software Engineer" />
+		<meta
+			property="twitter:description"
+			content="A full-stack software engineer specializing in building modern web applications."
+		/>
+		<meta
+			property="twitter:image"
+			content="https://your-domain.com/assets/koalalogo.webp"
+		/>
+		<!-- Replace with a full URL to your logo -->
+
 		<script src="https://cdn.tailwindcss.com"></script>
 		<link
 			rel="stylesheet"
@@ -184,6 +226,35 @@
 				max-height: 500px; /* Adjust if menu content is taller */
 			}
 		</style>
+		<!-- Structured Data -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Kevin Reyes",
+				"url": "https://your-domain.com",
+				"image": "https://your-domain.com/assets/koalalogo.webp",
+				"sameAs": [
+					"https://github.com/kay-rey",
+					"https://linkedin.com/in/kevbreyes"
+				],
+				"jobTitle": "Software Engineer",
+				"alumniOf": {
+					"@type": "CollegeOrUniversity",
+					"name": "San Francisco State University",
+					"sameAs": "https://www.sfsu.edu/"
+				},
+				"knowsAbout": [
+					"Python",
+					"JavaScript",
+					"Django",
+					"React",
+					"Full-Stack Development",
+					"Google Cloud",
+					"Docker"
+				]
+			}
+		</script>
 	</head>
 	<body class="antialiased">
 		<div class="cursor-dot"></div>
@@ -202,7 +273,7 @@
 					<img
 						src="assets/koalalogo.webp"
 						alt="Kevin Reyes Logo"
-						class="h-9 transition-transform hover:scale-110"
+						class="h-12 transition-transform hover:scale-110"
 					/>
 				</a>
 				<div class="hidden md:flex items-center space-x-8">
