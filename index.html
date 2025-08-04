@@ -28,15 +28,15 @@
 
 			body {
 				font-family: "Inter", sans-serif;
-				background-color: var(--dark-navy);
-				/* Updated background for top and bottom fade effect */
+				background-color: var(--light-navy);
+				/* Swapped background colors for a lighter hero */
 				background-image: linear-gradient(
 					180deg,
-					var(--dark-navy) 0%,
-					var(--dark-navy) 70vh,
-					var(--light-navy) 100vh,
-					var(--light-navy) calc(100% - 70vh),
-					var(--dark-navy) 100%
+					var(--light-navy) 0%,
+					var(--light-navy) 70vh,
+					var(--dark-navy) 100vh,
+					var(--dark-navy) calc(100% - 70vh),
+					var(--light-navy) 100%
 				);
 				color: var(--lightest-slate);
 				overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
@@ -198,7 +198,13 @@
 			<nav
 				class="container mx-auto px-6 py-4 flex justify-between items-center"
 			>
-				<a href="#" class="text-2xl font-bold text-white">KR.</a>
+				<a href="#">
+					<img
+						src="assets/koalalogo.webp"
+						alt="Kevin Reyes Logo"
+						class="h-9 transition-transform hover:scale-110"
+					/>
+				</a>
 				<div class="hidden md:flex items-center space-x-8">
 					<a href="#about" class="nav-link text-lg">About</a>
 					<a href="#projects" class="nav-link text-lg">Projects</a>
@@ -217,7 +223,7 @@
 				</button>
 			</nav>
 			<!-- Mobile Menu -->
-			<div id="mobile-menu" class="md:hidden bg-[var(--light-navy)]">
+			<div id="mobile-menu" class="md:hidden bg-[var(--dark-navy)]">
 				<div class="p-4">
 					<a href="#about" class="block py-2 text-center nav-link">About</a>
 					<a href="#projects" class="block py-2 text-center nav-link"
@@ -286,13 +292,13 @@
 						><i class="fab fa-github"></i
 					></a>
 					<a
-						href="https://linkedin.com/in/your-linkedin-profile"
+						href="https://linkedin.com/in/kevbreyes"
 						target="_blank"
 						class="text-3xl text-slate-400 hover:text-[var(--primary-color)] transition-transform hover:scale-125"
 						><i class="fab fa-linkedin"></i
 					></a>
 					<a
-						href="mailto:your.email@example.com"
+						href="mailto:kayreydev@gmail.com"
 						class="text-3xl text-slate-400 hover:text-[var(--primary-color)] transition-transform hover:scale-125"
 						><i class="fas fa-envelope"></i
 					></a>
@@ -387,12 +393,6 @@
 								href="#"
 								target="_blank"
 								class="hover:text-[var(--primary-color)] transition-colors"
-								><i class="fab fa-github"></i
-							></a>
-							<a
-								href="#"
-								target="_blank"
-								class="hover:text-[var(--primary-color)] transition-colors"
 								><i class="fas fa-external-link-alt"></i
 							></a>
 						</div>
@@ -408,7 +408,7 @@
 					></div>
 				</div>
 
-				<!-- Project 2: Connect Four AI -->
+				<!-- Project 2: ClarifyMed -->
 				<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
 					<div
 						class="md:col-span-5 md:text-left md:order-first scroll-animate animate-in-from-right"
@@ -417,26 +417,29 @@
 							Featured Project
 						</p>
 						<h3 class="text-2xl font-bold text-slate-200 mb-4">
-							Connect Four AI
+							ClarifyMed - AI Medical Translator
 						</h3>
 						<div
 							class="p-6 rounded-lg bg-[var(--lightest-navy)] shadow-md mb-4"
 						>
 							<p class="text-slate-400">
-								A classic game of Connect Four built in Python, featuring a
-								challenging AI opponent that uses the Minimax algorithm to make
-								strategic moves.
+								As Project Lead and the sole Backend Engineer, I led the
+								development of a web app that uses AI to simplify complex
+								medical jargon into patient-friendly language, delivering a
+								working MVP in 48 hours.
 							</p>
 						</div>
 						<ul
 							class="flex flex-wrap justify-start gap-x-4 gap-y-2 mb-4 text-slate-400 text-sm"
 						>
-							<li>Python</li>
-							<li>Minimax</li>
+							<li>Next.js</li>
+							<li>Gemini API</li>
+							<li>React</li>
+							<li>MongoDB</li>
 						</ul>
 						<div class="flex justify-start gap-4 text-2xl text-slate-400">
 							<a
-								href="https://github.com/kay-rey/Connect-Four-AI"
+								href="https://github.com/kay-rey/clarifymed"
 								target="_blank"
 								class="hover:text-[var(--primary-color)] transition-colors"
 								><i class="fab fa-github"></i
@@ -452,13 +455,10 @@
 					<div
 						class="project-image-container md:col-span-7 md:order-last scroll-animate animate-in-from-left"
 					>
-						<a
-							href="https://github.com/kay-rey/Connect-Four-AI"
-							target="_blank"
-						>
+						<a href="https://github.com/kay-rey/clarifymed" target="_blank">
 							<img
-								src="https://placehold.co/600x400/112240/a78bfa?text=Connect+Four+AI"
-								alt="Connect Four AI Screenshot"
+								src="https://placehold.co/600x400/112240/a78bfa?text=ClarifyMed"
+								alt="ClarifyMed Screenshot"
 								class="rounded-lg w-full"
 							/>
 						</a>
@@ -474,24 +474,69 @@
 					></div>
 				</div>
 
-				<!-- Project 3: Portfolio -->
+				<!-- Project 3: Catchimal -->
 				<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
 					<div
 						class="project-image-container md:col-span-7 scroll-animate animate-in-from-left"
 					>
-						<a
-							href="https://github.com/kay-rey/Portfolio-Website"
-							target="_blank"
-						>
+						<a href="https://devpost.com/software/catchimal" target="_blank">
 							<img
-								src="https://placehold.co/600x400/112240/a78bfa?text=Personal+Portfolio"
-								alt="Portfolio Website Screenshot"
+								src="https://placehold.co/600x400/112240/a78bfa?text=Catchimal"
+								alt="Catchimal App Screenshot"
 								class="rounded-lg w-full"
 							/>
 						</a>
 					</div>
 					<div
 						class="md:col-span-5 md:text-right scroll-animate animate-in-from-right"
+					>
+						<p class="text-sm text-[var(--primary-color)] font-semibold">
+							Featured Project
+						</p>
+						<h3 class="text-2xl font-bold text-slate-200 mb-4">
+							Catchimal - Award-Winning App
+						</h3>
+						<div
+							class="p-6 rounded-lg bg-[var(--lightest-navy)] shadow-md mb-4"
+						>
+							<p class="text-slate-400">
+								As Team Lead and Frontend Engineer, I directed a team to build
+								an award-winning mobile app where users catch eco-themed
+								creatures, promoting environmental awareness. Won "Best Hack for
+								Sustainability."
+							</p>
+						</div>
+						<ul
+							class="flex flex-wrap justify-end gap-x-4 gap-y-2 mb-4 text-slate-400 text-sm"
+						>
+							<li>HTML</li>
+							<li>CSS</li>
+							<li>JavaScript</li>
+						</ul>
+						<div class="flex justify-end gap-4 text-2xl text-slate-400">
+							<a
+								href="https://devpost.com/software/catchimal"
+								target="_blank"
+								class="hover:text-[var(--primary-color)] transition-colors"
+								><i class="fas fa-external-link-alt"></i
+							></a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Divider -->
+				<div
+					class="my-28 flex items-center justify-center scroll-animate animate-in-from-bottom"
+				>
+					<div
+						class="h-px w-full bg-gradient-to-r from-transparent via-[var(--slate)] to-transparent"
+					></div>
+				</div>
+
+				<!-- Project 4: Portfolio -->
+				<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+					<div
+						class="md:col-span-5 md:text-left md:order-first scroll-animate animate-in-from-right"
 					>
 						<p class="text-sm text-[var(--primary-color)] font-semibold">
 							Featured Project
@@ -510,13 +555,13 @@
 							</p>
 						</div>
 						<ul
-							class="flex flex-wrap justify-end gap-x-4 gap-y-2 mb-4 text-slate-400 text-sm"
+							class="flex flex-wrap justify-start gap-x-4 gap-y-2 mb-4 text-slate-400 text-sm"
 						>
 							<li>HTML</li>
 							<li>Tailwind CSS</li>
 							<li>JavaScript</li>
 						</ul>
-						<div class="flex justify-end gap-4 text-2xl text-slate-400">
+						<div class="flex justify-start gap-4 text-2xl text-slate-400">
 							<a
 								href="https://github.com/kay-rey/Portfolio-Website"
 								target="_blank"
@@ -524,6 +569,20 @@
 								><i class="fab fa-github"></i
 							></a>
 						</div>
+					</div>
+					<div
+						class="project-image-container md:col-span-7 md:order-last scroll-animate animate-in-from-left"
+					>
+						<a
+							href="https://github.com/kay-rey/Portfolio-Website"
+							target="_blank"
+						>
+							<img
+								src="https://placehold.co/600x400/112240/a78bfa?text=Personal+Portfolio"
+								alt="Portfolio Website Screenshot"
+								class="rounded-lg w-full"
+							/>
+						</a>
 					</div>
 				</div>
 			</section>
@@ -611,7 +670,7 @@
 					best to get back to you!
 				</p>
 				<a
-					href="mailto:your.email@example.com"
+					href="mailto:kayreydev@gmail.com"
 					class="bg-[var(--primary-color)] text-[var(--dark-navy)] font-bold py-4 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300 text-lg shadow-lg hover:shadow-xl shadow-[var(--primary-color)]/20 scroll-animate animate-in-from-bottom"
 					style="transition-delay: 200ms"
 				>
@@ -732,7 +791,7 @@
 				function animateParticles() {
 					requestAnimationFrame(animateParticles);
 					// This creates a shorter "comet tail" effect by fading previous frames faster
-					ctx.fillStyle = "rgba(10, 25, 47, 0.3)";
+					ctx.fillStyle = "rgba(17, 34, 64, 0.3)";
 					ctx.fillRect(0, 0, innerWidth, innerHeight);
 
 					for (let i = 0; i < particlesArray.length; i++) {
@@ -780,7 +839,7 @@
 							return;
 						}
 					}
-					const typeSpeed = isDeleting ? 50 : 150;
+					const typeSpeed = isDeleting ? 30 : 100;
 					setTimeout(type, typeSpeed);
 				}
 				setTimeout(type, 1000);
@@ -833,7 +892,7 @@
 					const scrollY = window.scrollY;
 
 					// 1. Header background
-					header.classList.toggle("bg-[var(--dark-navy)]", scrollY > 50);
+					header.classList.toggle("bg-[var(--light-navy)]", scrollY > 50);
 					header.classList.toggle("shadow-lg", scrollY > 50);
 
 					// 2. Particle Opacity
