@@ -82,14 +82,6 @@
 				border: 1px solid rgba(167, 139, 250, 0.2);
 			}
 
-			.project-card:hover .project-overlay {
-				opacity: 1;
-			}
-
-			.project-card:hover img {
-				transform: scale(1.05);
-			}
-
 			.nav-link {
 				position: relative;
 				transition: color 0.3s;
@@ -147,6 +139,24 @@
 			.fade-in-section.is-visible {
 				opacity: 1;
 				transform: translateY(0);
+			}
+
+			/* New Project Card Styles */
+			.project-image-container a {
+				display: block;
+				border-radius: 0.5rem;
+				overflow: hidden;
+				transition: transform 0.3s, box-shadow 0.3s;
+			}
+			.project-image-container a:hover {
+				transform: scale(1.03);
+				box-shadow: 0 20px 30px -15px rgba(2, 12, 27, 0.7);
+			}
+			.project-image-container img {
+				transition: filter 0.3s;
+			}
+			.project-image-container a:hover img {
+				filter: none; /* Remove grayscale on hover */
 			}
 		</style>
 	</head>
@@ -297,54 +307,116 @@
 
 			<!-- Projects Section -->
 			<section id="projects" class="py-20 fade-in-section">
-				<h2 class="section-title text-3xl font-bold mb-12">My Projects</h2>
-				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<h2 class="section-title text-3xl font-bold mb-20">My Projects</h2>
+				<div class="space-y-28">
 					<!-- Project 1 -->
-					<div
-						class="project-card group relative overflow-hidden rounded-lg shadow-lg glass-effect"
-					>
-						<img
-							src="https://placehold.co/600x400/112240/a78bfa?text=Project+One"
-							alt="Project 1"
-							class="w-full h-full object-cover transition-transform duration-500"
-						/>
-						<div
-							class="project-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transition-opacity duration-500 flex flex-col justify-center items-center p-6 text-center"
-						>
-							<h3 class="text-2xl font-bold text-[var(--primary-color)] mb-2">
+					<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+						<!-- Project Image -->
+						<div class="project-image-container md:col-span-7">
+							<a href="#" target="_blank">
+								<img
+									src="https://placehold.co/600x400/112240/a78bfa?text=Project+One"
+									alt="Project 1 Screenshot"
+									class="rounded-lg w-full"
+								/>
+							</a>
+						</div>
+						<!-- Project Details -->
+						<div class="md:col-span-5 md:text-right">
+							<p class="text-sm text-[var(--primary-color)] font-semibold">
+								Featured Project
+							</p>
+							<h3 class="text-2xl font-bold text-slate-200 mb-4">
 								Project Title 1
 							</h3>
-							<p class="text-slate-300 mb-4">
-								A brief but compelling description of the project, highlighting
-								the problem it solves and the value it provides.
-							</p>
-							<div class="mb-4">
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>React</span
-								>
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>Node.js</span
-								>
+							<div
+								class="p-6 rounded-lg bg-[var(--lightest-navy)] shadow-md mb-4"
+							>
+								<p class="text-slate-400">
+									A brief but compelling description of the project. It
+									highlights the problem it solves, the technologies used, and
+									your role in the project. Make it engaging for hiring
+									managers.
+								</p>
 							</div>
-							<div>
+							<ul
+								class="flex flex-wrap justify-end gap-x-4 gap-y-2 mb-4 text-slate-400 text-sm"
+							>
+								<li>React</li>
+								<li>Node.js</li>
+								<li>Express</li>
+								<li>MongoDB</li>
+							</ul>
+							<div class="flex justify-end gap-4 text-2xl text-slate-400">
 								<a
 									href="#"
 									target="_blank"
-									class="text-2xl text-slate-300 hover:text-[var(--primary-color)] mr-4"
+									class="hover:text-[var(--primary-color)] transition-colors"
 									><i class="fab fa-github"></i
 								></a>
 								<a
 									href="#"
 									target="_blank"
-									class="text-2xl text-slate-300 hover:text-[var(--primary-color)]"
+									class="hover:text-[var(--primary-color)] transition-colors"
 									><i class="fas fa-external-link-alt"></i
 								></a>
 							</div>
 						</div>
 					</div>
-					<!-- Add more projects similarly -->
+
+					<!-- Project 2 -->
+					<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+						<!-- Project Details -->
+						<div class="md:col-span-5 md:text-left md:order-first">
+							<p class="text-sm text-[var(--primary-color)] font-semibold">
+								Featured Project
+							</p>
+							<h3 class="text-2xl font-bold text-slate-200 mb-4">
+								Project Title 2
+							</h3>
+							<div
+								class="p-6 rounded-lg bg-[var(--lightest-navy)] shadow-md mb-4"
+							>
+								<p class="text-slate-400">
+									Another great project description. Talk about the challenges
+									you faced and how you overcame them. This shows
+									problem-solving skills, which are highly valued.
+								</p>
+							</div>
+							<ul
+								class="flex flex-wrap justify-start gap-x-4 gap-y-2 mb-4 text-slate-400 text-sm"
+							>
+								<li>Python</li>
+								<li>Flask</li>
+								<li>PostgreSQL</li>
+								<li>Docker</li>
+							</ul>
+							<div class="flex justify-start gap-4 text-2xl text-slate-400">
+								<a
+									href="#"
+									target="_blank"
+									class="hover:text-[var(--primary-color)] transition-colors"
+									><i class="fab fa-github"></i
+								></a>
+								<a
+									href="#"
+									target="_blank"
+									class="hover:text-[var(--primary-color)] transition-colors"
+									><i class="fas fa-external-link-alt"></i
+								></a>
+							</div>
+						</div>
+						<!-- Project Image -->
+						<div class="project-image-container md:col-span-7 md:order-last">
+							<a href="#" target="_blank">
+								<img
+									src="https://placehold.co/600x400/112240/a78bfa?text=Project+Two"
+									alt="Project 2 Screenshot"
+									class="rounded-lg w-full"
+								/>
+							</a>
+						</div>
+					</div>
 				</div>
 			</section>
 
