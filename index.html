@@ -801,6 +801,11 @@
 						}
 					});
 
+					// Force 'contact' to be active if scrolled to the bottom of the page
+					if (window.innerHeight + scrollY >= document.body.offsetHeight - 2) {
+						current = "contact";
+					}
+
 					navLinks.forEach((link) => {
 						link.classList.remove("active", "text-[var(--primary-color)]");
 						if (link.getAttribute("href").includes(current)) {
