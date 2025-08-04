@@ -28,7 +28,6 @@
 
 			body {
 				font-family: "Inter", sans-serif;
-				/* Updated background for the fade effect */
 				background-color: var(--light-navy);
 				background-image: linear-gradient(
 					180deg,
@@ -38,6 +37,7 @@
 				);
 				color: var(--lightest-slate);
 				cursor: none; /* Hide the default cursor */
+				overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
 			}
 
 			/* Custom Cursor */
@@ -130,18 +130,26 @@
 				border-color: var(--primary-color);
 			}
 
-			/* Scroll Animations */
-			.fade-in-section {
+			/* New Scroll Animations */
+			.scroll-animate {
 				opacity: 0;
-				transform: translateY(30px);
 				transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 			}
-			.fade-in-section.is-visible {
+			.scroll-animate.animate-in-from-left {
+				transform: translateX(-40px);
+			}
+			.scroll-animate.animate-in-from-right {
+				transform: translateX(40px);
+			}
+			.scroll-animate.animate-in-from-bottom {
+				transform: translateY(40px);
+			}
+			.scroll-animate.is-visible {
 				opacity: 1;
-				transform: translateY(0);
+				transform: translateX(0) translateY(0);
 			}
 
-			/* New Project Card Styles */
+			/* Project Card Styles */
 			.project-image-container a {
 				display: block;
 				border-radius: 0.5rem;
@@ -156,7 +164,7 @@
 				transition: filter 0.3s;
 			}
 			.project-image-container a:hover img {
-				filter: none; /* Remove grayscale on hover */
+				filter: none;
 			}
 		</style>
 	</head>
@@ -213,25 +221,25 @@
 				class="min-h-screen flex flex-col justify-center items-start pt-20"
 			>
 				<p
-					class="text-[var(--primary-color)] text-lg mb-4 fade-in-section"
+					class="text-[var(--primary-color)] text-lg mb-4 scroll-animate animate-in-from-bottom"
 					style="transition-delay: 100ms"
 				>
 					Hi, my name is
 				</p>
 				<h1
-					class="text-4xl md:text-7xl font-bold text-slate-200 fade-in-section"
+					class="text-4xl md:text-7xl font-bold text-slate-200 scroll-animate animate-in-from-bottom"
 					style="transition-delay: 200ms"
 				>
 					Kevin Reyes.
 				</h1>
 				<h2
-					class="text-4xl md:text-7xl font-bold text-slate-400 mt-2 fade-in-section"
+					class="text-4xl md:text-7xl font-bold text-slate-400 mt-2 scroll-animate animate-in-from-bottom"
 					style="transition-delay: 300ms"
 				>
 					I build things for the web.
 				</h2>
 				<p
-					class="text-lg text-slate-400 max-w-xl mt-6 fade-in-section"
+					class="text-lg text-slate-400 max-w-xl mt-6 scroll-animate animate-in-from-bottom"
 					style="transition-delay: 400ms"
 				>
 					I'm a passionate software engineer specializing in creating
@@ -247,7 +255,7 @@
 					></span>
 				</p>
 				<div
-					class="mt-8 flex space-x-4 fade-in-section"
+					class="mt-8 flex space-x-4 scroll-animate animate-in-from-bottom"
 					style="transition-delay: 500ms"
 				>
 					<a
@@ -271,26 +279,34 @@
 			</section>
 
 			<!-- About Section -->
-			<section id="about" class="py-20 fade-in-section">
-				<h2 class="section-title text-3xl font-bold mb-12">About Me</h2>
+			<section id="about" class="py-20">
+				<h2
+					class="section-title text-3xl font-bold mb-12 scroll-animate animate-in-from-bottom"
+				>
+					About Me
+				</h2>
 				<div class="flex flex-col md:flex-row items-center gap-12">
-					<div class="md:w-2/3 text-lg text-slate-400 space-y-4">
+					<div
+						class="md:w-2/3 text-lg text-slate-400 space-y-4 scroll-animate animate-in-from-left"
+					>
 						<p>
 							Hello! I'm Kevin, a software engineer with a passion for
 							developing innovative solutions. My journey into tech started with
 							a fascination for how things work, which led me to dive deep into
-							programming. I enjoy the challenge of turning complex problems
-							into simple, beautiful, and intuitive designs.
+							programming and the challenge of turning complex problems into
+							simple, beautiful, and intuitive designs.
 						</p>
 						<p>
 							I specialize in full-stack development, with experience in both
-							front-end and back-end technologies. I'm always eager to learn new
-							things and stay up-to-date with the latest industry trends. When
-							I'm not coding, you can find me exploring new hiking trails,
-							experimenting with new recipes, or reading a good book.
+							front-end and back-end technologies. When I'm not coding, you can
+							find me on the mats as a dedicated jiu-jitsu coach and athlete, or
+							exploring the beautiful landscapes of my home state, California.
+							The discipline and problem-solving from jiu-jitsu directly
+							translate to my work, teaching me to stay calm under pressure and
+							find creative solutions.
 						</p>
 					</div>
-					<div class="md:w-1/3">
+					<div class="md:w-1/3 scroll-animate animate-in-from-right">
 						<div class="relative w-full max-w-sm mx-auto group">
 							<div
 								class="absolute inset-0 bg-[var(--primary-color)] rounded-lg transform -rotate-6 transition duration-500 group-hover:rotate-0 group-hover:scale-105"
@@ -306,13 +322,19 @@
 			</section>
 
 			<!-- Projects Section -->
-			<section id="projects" class="py-20 fade-in-section">
-				<h2 class="section-title text-3xl font-bold mb-20">My Projects</h2>
+			<section id="projects" class="py-20">
+				<h2
+					class="section-title text-3xl font-bold mb-20 scroll-animate animate-in-from-bottom"
+				>
+					My Projects
+				</h2>
 				<div class="space-y-28">
 					<!-- Project 1 -->
 					<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
 						<!-- Project Image -->
-						<div class="project-image-container md:col-span-7">
+						<div
+							class="project-image-container md:col-span-7 scroll-animate animate-in-from-left"
+						>
 							<a href="#" target="_blank">
 								<img
 									src="https://placehold.co/600x400/112240/a78bfa?text=Project+One"
@@ -322,7 +344,9 @@
 							</a>
 						</div>
 						<!-- Project Details -->
-						<div class="md:col-span-5 md:text-right">
+						<div
+							class="md:col-span-5 md:text-right scroll-animate animate-in-from-right"
+						>
 							<p class="text-sm text-[var(--primary-color)] font-semibold">
 								Featured Project
 							</p>
@@ -367,7 +391,9 @@
 					<!-- Project 2 -->
 					<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
 						<!-- Project Details -->
-						<div class="md:col-span-5 md:text-left md:order-first">
+						<div
+							class="md:col-span-5 md:text-left md:order-first scroll-animate animate-in-from-right"
+						>
 							<p class="text-sm text-[var(--primary-color)] font-semibold">
 								Featured Project
 							</p>
@@ -407,7 +433,9 @@
 							</div>
 						</div>
 						<!-- Project Image -->
-						<div class="project-image-container md:col-span-7 md:order-last">
+						<div
+							class="project-image-container md:col-span-7 md:order-last scroll-animate animate-in-from-left"
+						>
 							<a href="#" target="_blank">
 								<img
 									src="https://placehold.co/600x400/112240/a78bfa?text=Project+Two"
@@ -421,12 +449,17 @@
 			</section>
 
 			<!-- Skills Section -->
-			<section id="skills" class="py-20 fade-in-section">
-				<h2 class="section-title text-3xl font-bold mb-12 text-center">
+			<section id="skills" class="py-20">
+				<h2
+					class="section-title text-3xl font-bold mb-12 text-center scroll-animate animate-in-from-bottom"
+				>
 					My Toolkit
 				</h2>
 				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-					<div class="skill-category p-6 glass-effect rounded-lg text-center">
+					<div
+						class="skill-category p-6 glass-effect rounded-lg text-center scroll-animate animate-in-from-bottom"
+						style="transition-delay: 100ms"
+					>
 						<i
 							class="fas fa-code text-4xl text-[var(--primary-color)] mb-4"
 						></i>
@@ -441,7 +474,10 @@
 							<span class="skill-tag">Tailwind CSS</span>
 						</div>
 					</div>
-					<div class="skill-category p-6 glass-effect rounded-lg text-center">
+					<div
+						class="skill-category p-6 glass-effect rounded-lg text-center scroll-animate animate-in-from-bottom"
+						style="transition-delay: 200ms"
+					>
 						<i
 							class="fas fa-server text-4xl text-[var(--primary-color)] mb-4"
 						></i>
@@ -456,7 +492,8 @@
 						</div>
 					</div>
 					<div
-						class="skill-category p-6 glass-effect rounded-lg text-center md:col-span-2 lg:col-span-1"
+						class="skill-category p-6 glass-effect rounded-lg text-center md:col-span-2 lg:col-span-1 scroll-animate animate-in-from-bottom"
+						style="transition-delay: 300ms"
 					>
 						<i
 							class="fas fa-database text-4xl text-[var(--primary-color)] mb-4"
@@ -477,16 +514,24 @@
 			</section>
 
 			<!-- Contact Section -->
-			<section id="contact" class="py-20 text-center fade-in-section">
-				<h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
-				<p class="text-lg text-slate-400 max-w-xl mx-auto mb-8">
+			<section id="contact" class="py-20 text-center">
+				<h2
+					class="text-3xl font-bold mb-4 scroll-animate animate-in-from-bottom"
+				>
+					Get In Touch
+				</h2>
+				<p
+					class="text-lg text-slate-400 max-w-xl mx-auto mb-8 scroll-animate animate-in-from-bottom"
+					style="transition-delay: 100ms"
+				>
 					I'm currently looking for new opportunities and my inbox is always
 					open. Whether you have a question or just want to say hi, I'll try my
 					best to get back to you!
 				</p>
 				<a
 					href="mailto:your.email@example.com"
-					class="bg-[var(--primary-color)] text-[var(--dark-navy)] font-bold py-4 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300 text-lg shadow-lg hover:shadow-xl shadow-[var(--primary-color)]/20"
+					class="bg-[var(--primary-color)] text-[var(--dark-navy)] font-bold py-4 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300 text-lg shadow-lg hover:shadow-xl shadow-[var(--primary-color)]/20 scroll-animate animate-in-from-bottom"
+					style="transition-delay: 200ms"
 				>
 					Say Hello
 				</a>
@@ -514,7 +559,7 @@
 				document.querySelectorAll("a, button, .skill-tag").forEach((el) => {
 					el.addEventListener("mouseenter", () => {
 						cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
-						cursorOutline.style.borderColor = "#f87171"; // Change color on hover
+						cursorOutline.style.borderColor = "#f87171";
 					});
 					el.addEventListener("mouseleave", () => {
 						cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
@@ -618,7 +663,7 @@
 						j++;
 						if (j === currentWord.length) {
 							isDeleting = true;
-							setTimeout(type, 2000); // Pause at end of word
+							setTimeout(type, 2000);
 							return;
 						}
 					}
@@ -650,10 +695,10 @@
 							}
 						});
 					},
-					{ threshold: 0.1 }
+					{ threshold: 0.15 }
 				);
-				document.querySelectorAll(".fade-in-section").forEach((section) => {
-					observer.observe(section);
+				document.querySelectorAll(".scroll-animate").forEach((el) => {
+					observer.observe(el);
 				});
 
 				// --- Active nav link highlighting ---
