@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 	<head>
-		<meta charset="UTF-g" />
+		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Kevin Reyes - Software Engineer</title>
 		<script src="https://cdn.tailwindcss.com"></script>
@@ -16,30 +16,78 @@
 			rel="stylesheet"
 		/>
 		<style>
+			:root {
+				--primary-color: #a78bfa; /* Vibrant Purple */
+				--dark-navy: #0a192f;
+				--light-navy: #112240;
+				--lightest-navy: #233554;
+				--slate: #8892b0;
+				--light-slate: #a8b2d1;
+				--lightest-slate: #ccd6f6;
+			}
+
 			body {
 				font-family: "Inter", sans-serif;
-				background-color: #0a192f;
-				color: #ccd6f6;
+				background-color: var(--dark-navy);
+				color: var(--lightest-slate);
+				cursor: none; /* Hide the default cursor */
 			}
+
+			/* Custom Cursor */
+			.cursor-dot {
+				width: 8px;
+				height: 8px;
+				background-color: var(--primary-color);
+				border-radius: 50%;
+				position: fixed;
+				z-index: 9999;
+				pointer-events: none;
+				transform: translate(-50%, -50%);
+				transition: width 0.2s, height 0.2s;
+			}
+			.cursor-outline {
+				width: 40px;
+				height: 40px;
+				border: 2px solid var(--primary-color);
+				border-radius: 50%;
+				position: fixed;
+				z-index: 9999;
+				pointer-events: none;
+				transform: translate(-50%, -50%);
+				transition: all 0.2s ease-out;
+			}
+
+			/* Particle Canvas */
+			#particle-canvas {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+				opacity: 0.1;
+			}
+
 			.glass-effect {
-				background: rgba(255, 255, 255, 0.05);
+				background: rgba(35, 53, 84, 0.5);
 				backdrop-filter: blur(10px);
 				-webkit-backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.1);
+				border: 1px solid rgba(167, 139, 250, 0.2);
 			}
-			.skill-bar-fill {
-				transition: width 2s ease-in-out;
-			}
+
 			.project-card:hover .project-overlay {
 				opacity: 1;
 			}
+
 			.project-card:hover img {
 				transform: scale(1.05);
 			}
+
 			.nav-link {
 				position: relative;
 				transition: color 0.3s;
 			}
+
 			.nav-link::after {
 				content: "";
 				position: absolute;
@@ -48,24 +96,58 @@
 				bottom: -4px;
 				left: 50%;
 				transform: translateX(-50%);
-				background-color: #64ffda;
+				background-color: var(--primary-color);
 				transition: width 0.3s;
 			}
+
 			.nav-link:hover::after,
 			.nav-link.active::after {
 				width: 100%;
 			}
+
 			.section-title::after {
 				content: "";
 				display: block;
 				width: 80px;
 				height: 3px;
-				background-color: #64ffda;
+				background-color: var(--primary-color);
 				margin-top: 10px;
+			}
+
+			/* Skill Tags */
+			.skill-tag {
+				background-color: var(--lightest-navy);
+				color: var(--light-slate);
+				padding: 0.5rem 1rem;
+				border-radius: 0.5rem;
+				font-weight: 500;
+				transition: all 0.3s ease;
+				border: 1px solid transparent;
+			}
+			.skill-tag:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+				color: var(--primary-color);
+				border-color: var(--primary-color);
+			}
+
+			/* Scroll Animations */
+			.fade-in-section {
+				opacity: 0;
+				transform: translateY(30px);
+				transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+			}
+			.fade-in-section.is-visible {
+				opacity: 1;
+				transform: translateY(0);
 			}
 		</style>
 	</head>
 	<body class="antialiased">
+		<div class="cursor-dot"></div>
+		<div class="cursor-outline"></div>
+		<canvas id="particle-canvas"></canvas>
+
 		<!-- Header -->
 		<header
 			id="header"
@@ -84,7 +166,7 @@
 				<a
 					href="path/to/your/resume.pdf"
 					target="_blank"
-					class="hidden md:block bg-transparent border-2 border-[#64ffda] text-[#64ffda] px-4 py-2 rounded-md hover:bg-[#64ffda] hover:text-[#0a192f] transition-all duration-300"
+					class="hidden md:block bg-transparent border-2 border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-2 rounded-md hover:bg-[var(--primary-color)] hover:text-[var(--dark-navy)] transition-all duration-300"
 				>
 					Resume
 				</a>
@@ -93,7 +175,7 @@
 				</button>
 			</nav>
 			<!-- Mobile Menu -->
-			<div id="mobile-menu" class="hidden md:hidden bg-[#112240] p-4">
+			<div id="mobile-menu" class="hidden md:hidden bg-[var(--light-navy)] p-4">
 				<a href="#about" class="block py-2 text-center nav-link">About</a>
 				<a href="#projects" class="block py-2 text-center nav-link">Projects</a>
 				<a href="#skills" class="block py-2 text-center nav-link">Skills</a>
@@ -101,58 +183,78 @@
 				<a
 					href="path/to/your/resume.pdf"
 					target="_blank"
-					class="block mt-4 text-center bg-[#64ffda] text-[#0a192f] px-4 py-2 rounded-md"
+					class="block mt-4 text-center bg-[var(--primary-color)] text-[var(--dark-navy)] px-4 py-2 rounded-md"
 					>Resume</a
 				>
 			</div>
 		</header>
 
-		<main class="container mx-auto px-6">
+		<main class="container mx-auto px-6 relative z-10">
 			<!-- Hero Section -->
 			<section
 				id="home"
 				class="min-h-screen flex flex-col justify-center items-start pt-20"
 			>
-				<p class="text-[#64ffda] text-lg mb-4">Hi, my name is</p>
-				<h1 class="text-4xl md:text-7xl font-bold text-slate-200">
+				<p
+					class="text-[var(--primary-color)] text-lg mb-4 fade-in-section"
+					style="transition-delay: 100ms"
+				>
+					Hi, my name is
+				</p>
+				<h1
+					class="text-4xl md:text-7xl font-bold text-slate-200 fade-in-section"
+					style="transition-delay: 200ms"
+				>
 					Kevin Reyes.
 				</h1>
-				<h2 class="text-4xl md:text-7xl font-bold text-slate-400 mt-2">
+				<h2
+					class="text-4xl md:text-7xl font-bold text-slate-400 mt-2 fade-in-section"
+					style="transition-delay: 300ms"
+				>
 					I build things for the web.
 				</h2>
-				<p class="text-lg text-slate-400 max-w-xl mt-6">
+				<p
+					class="text-lg text-slate-400 max-w-xl mt-6 fade-in-section"
+					style="transition-delay: 400ms"
+				>
 					I'm a passionate software engineer specializing in creating
 					exceptional digital experiences. Currently, I'm focused on building
 					accessible, human-centered products and web applications. I am
 					proficient in
-					<span id="typed-text" class="text-[#64ffda] font-semibold"></span
+					<span
+						id="typed-text"
+						class="text-[var(--primary-color)] font-semibold"
+					></span
 					><span
-						class="inline-block animate-ping w-2 h-2 bg-[#64ffda] rounded-full"
+						class="inline-block animate-ping w-2 h-2 bg-[var(--primary-color)] rounded-full"
 					></span>
 				</p>
-				<div class="mt-8 flex space-x-4">
+				<div
+					class="mt-8 flex space-x-4 fade-in-section"
+					style="transition-delay: 500ms"
+				>
 					<a
 						href="https://github.com/your-github-username"
 						target="_blank"
-						class="text-3xl text-slate-400 hover:text-[#64ffda] transition-colors"
+						class="text-3xl text-slate-400 hover:text-[var(--primary-color)] transition-transform hover:scale-125"
 						><i class="fab fa-github"></i
 					></a>
 					<a
 						href="https://linkedin.com/in/your-linkedin-profile"
 						target="_blank"
-						class="text-3xl text-slate-400 hover:text-[#64ffda] transition-colors"
+						class="text-3xl text-slate-400 hover:text-[var(--primary-color)] transition-transform hover:scale-125"
 						><i class="fab fa-linkedin"></i
 					></a>
 					<a
 						href="mailto:your.email@example.com"
-						class="text-3xl text-slate-400 hover:text-[#64ffda] transition-colors"
+						class="text-3xl text-slate-400 hover:text-[var(--primary-color)] transition-transform hover:scale-125"
 						><i class="fas fa-envelope"></i
 					></a>
 				</div>
 			</section>
 
 			<!-- About Section -->
-			<section id="about" class="py-20">
+			<section id="about" class="py-20 fade-in-section">
 				<h2 class="section-title text-3xl font-bold mb-12">About Me</h2>
 				<div class="flex flex-col md:flex-row items-center gap-12">
 					<div class="md:w-2/3 text-lg text-slate-400 space-y-4">
@@ -170,38 +272,16 @@
 							I'm not coding, you can find me exploring new hiking trails,
 							experimenting with new recipes, or reading a good book.
 						</p>
-						<p>Here are a few technologies I've been working with recently:</p>
-						<ul class="grid grid-cols-2 gap-2 text-slate-300">
-							<li class="flex items-center">
-								<i class="fas fa-caret-right text-[#64ffda] mr-2"></i>JavaScript
-								(ES6+)
-							</li>
-							<li class="flex items-center">
-								<i class="fas fa-caret-right text-[#64ffda] mr-2"></i>React
-							</li>
-							<li class="flex items-center">
-								<i class="fas fa-caret-right text-[#64ffda] mr-2"></i>Node.js
-							</li>
-							<li class="flex items-center">
-								<i class="fas fa-caret-right text-[#64ffda] mr-2"></i>Python
-							</li>
-							<li class="flex items-center">
-								<i class="fas fa-caret-right text-[#64ffda] mr-2"></i>MongoDB
-							</li>
-							<li class="flex items-center">
-								<i class="fas fa-caret-right text-[#64ffda] mr-2"></i>Firebase
-							</li>
-						</ul>
 					</div>
 					<div class="md:w-1/3">
-						<div class="relative w-full max-w-sm mx-auto">
+						<div class="relative w-full max-w-sm mx-auto group">
 							<div
-								class="absolute inset-0 bg-[#64ffda] rounded-lg transform -rotate-3 transition duration-500 hover:rotate-0"
+								class="absolute inset-0 bg-[var(--primary-color)] rounded-lg transform -rotate-6 transition duration-500 group-hover:rotate-0 group-hover:scale-105"
 							></div>
 							<img
 								src="https://placehold.co/400x400/0a192f/ccd6f6?text=Kevin+Reyes"
 								alt="Kevin Reyes"
-								class="relative rounded-lg shadow-xl w-full h-full object-cover"
+								class="relative rounded-lg shadow-xl w-full h-full object-cover transition duration-500 group-hover:scale-105"
 							/>
 						</div>
 					</div>
@@ -209,22 +289,22 @@
 			</section>
 
 			<!-- Projects Section -->
-			<section id="projects" class="py-20">
+			<section id="projects" class="py-20 fade-in-section">
 				<h2 class="section-title text-3xl font-bold mb-12">My Projects</h2>
 				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 					<!-- Project 1 -->
 					<div
-						class="project-card group relative overflow-hidden rounded-lg shadow-lg"
+						class="project-card group relative overflow-hidden rounded-lg shadow-lg glass-effect"
 					>
 						<img
-							src="https://placehold.co/600x400/112240/64ffda?text=Project+One"
+							src="https://placehold.co/600x400/112240/a78bfa?text=Project+One"
 							alt="Project 1"
 							class="w-full h-full object-cover transition-transform duration-500"
 						/>
 						<div
 							class="project-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transition-opacity duration-500 flex flex-col justify-center items-center p-6 text-center"
 						>
-							<h3 class="text-2xl font-bold text-[#64ffda] mb-2">
+							<h3 class="text-2xl font-bold text-[var(--primary-color)] mb-2">
 								Project Title 1
 							</h3>
 							<p class="text-slate-300 mb-4">
@@ -240,233 +320,85 @@
 									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
 									>Node.js</span
 								>
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>MongoDB</span
-								>
 							</div>
 							<div>
 								<a
 									href="#"
 									target="_blank"
-									class="text-2xl text-slate-300 hover:text-[#64ffda] mr-4"
+									class="text-2xl text-slate-300 hover:text-[var(--primary-color)] mr-4"
 									><i class="fab fa-github"></i
 								></a>
 								<a
 									href="#"
 									target="_blank"
-									class="text-2xl text-slate-300 hover:text-[#64ffda]"
+									class="text-2xl text-slate-300 hover:text-[var(--primary-color)]"
 									><i class="fas fa-external-link-alt"></i
 								></a>
 							</div>
 						</div>
 					</div>
-					<!-- Project 2 -->
-					<div
-						class="project-card group relative overflow-hidden rounded-lg shadow-lg"
-					>
-						<img
-							src="https://placehold.co/600x400/112240/64ffda?text=Project+Two"
-							alt="Project 2"
-							class="w-full h-full object-cover transition-transform duration-500"
-						/>
-						<div
-							class="project-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transition-opacity duration-500 flex flex-col justify-center items-center p-6 text-center"
-						>
-							<h3 class="text-2xl font-bold text-[#64ffda] mb-2">
-								Project Title 2
-							</h3>
-							<p class="text-slate-300 mb-4">
-								A brief but compelling description of the project, highlighting
-								the problem it solves and the value it provides.
-							</p>
-							<div class="mb-4">
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>Python</span
-								>
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>Flask</span
-								>
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>PostgreSQL</span
-								>
-							</div>
-							<div>
-								<a
-									href="#"
-									target="_blank"
-									class="text-2xl text-slate-300 hover:text-[#64ffda] mr-4"
-									><i class="fab fa-github"></i
-								></a>
-								<a
-									href="#"
-									target="_blank"
-									class="text-2xl text-slate-300 hover:text-[#64ffda]"
-									><i class="fas fa-external-link-alt"></i
-								></a>
-							</div>
-						</div>
-					</div>
-					<!-- Project 3 -->
-					<div
-						class="project-card group relative overflow-hidden rounded-lg shadow-lg"
-					>
-						<img
-							src="https://placehold.co/600x400/112240/64ffda?text=Project+Three"
-							alt="Project 3"
-							class="w-full h-full object-cover transition-transform duration-500"
-						/>
-						<div
-							class="project-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transition-opacity duration-500 flex flex-col justify-center items-center p-6 text-center"
-						>
-							<h3 class="text-2xl font-bold text-[#64ffda] mb-2">
-								Project Title 3
-							</h3>
-							<p class="text-slate-300 mb-4">
-								A brief but compelling description of the project, highlighting
-								the problem it solves and the value it provides.
-							</p>
-							<div class="mb-4">
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>Vue.js</span
-								>
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>Firebase</span
-								>
-								<span
-									class="inline-block bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-slate-300 mr-2 mb-2"
-									>TailwindCSS</span
-								>
-							</div>
-							<div>
-								<a
-									href="#"
-									target="_blank"
-									class="text-2xl text-slate-300 hover:text-[#64ffda] mr-4"
-									><i class="fab fa-github"></i
-								></a>
-								<a
-									href="#"
-									target="_blank"
-									class="text-2xl text-slate-300 hover:text-[#64ffda]"
-									><i class="fas fa-external-link-alt"></i
-								></a>
-							</div>
-						</div>
-					</div>
+					<!-- Add more projects similarly -->
 				</div>
 			</section>
 
 			<!-- Skills Section -->
-			<section id="skills" class="py-20">
-				<h2 class="section-title text-3xl font-bold mb-12">My Skills</h2>
-				<div class="grid md:grid-cols-2 gap-8">
-					<div>
-						<h3 class="text-xl font-semibold mb-4 text-slate-300">Frontend</h3>
-						<div class="mb-4">
-							<div class="flex justify-between mb-1">
-								<span class="text-base font-medium text-slate-300"
-									>HTML & CSS</span
-								>
-								<span class="text-sm font-medium text-slate-300">95%</span>
-							</div>
-							<div class="w-full bg-slate-700 rounded-full h-2.5">
-								<div
-									class="bg-[#64ffda] h-2.5 rounded-full skill-bar-fill"
-									style="width: 0%"
-									data-width="95%"
-								></div>
-							</div>
-						</div>
-						<div class="mb-4">
-							<div class="flex justify-between mb-1">
-								<span class="text-base font-medium text-slate-300"
-									>JavaScript</span
-								>
-								<span class="text-sm font-medium text-slate-300">90%</span>
-							</div>
-							<div class="w-full bg-slate-700 rounded-full h-2.5">
-								<div
-									class="bg-[#64ffda] h-2.5 rounded-full skill-bar-fill"
-									style="width: 0%"
-									data-width="90%"
-								></div>
-							</div>
-						</div>
-						<div class="mb-4">
-							<div class="flex justify-between mb-1">
-								<span class="text-base font-medium text-slate-300"
-									>React / Next.js</span
-								>
-								<span class="text-sm font-medium text-slate-300">85%</span>
-							</div>
-							<div class="w-full bg-slate-700 rounded-full h-2.5">
-								<div
-									class="bg-[#64ffda] h-2.5 rounded-full skill-bar-fill"
-									style="width: 0%"
-									data-width="85%"
-								></div>
-							</div>
+			<section id="skills" class="py-20 fade-in-section">
+				<h2 class="section-title text-3xl font-bold mb-12 text-center">
+					My Toolkit
+				</h2>
+				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<div class="skill-category p-6 glass-effect rounded-lg text-center">
+						<i
+							class="fas fa-code text-4xl text-[var(--primary-color)] mb-4"
+						></i>
+						<h3 class="text-2xl font-bold mb-4 text-slate-200">Frontend</h3>
+						<div class="flex flex-wrap justify-center gap-3">
+							<span class="skill-tag">HTML</span>
+							<span class="skill-tag">CSS & Sass</span>
+							<span class="skill-tag">JavaScript</span>
+							<span class="skill-tag">TypeScript</span>
+							<span class="skill-tag">React</span>
+							<span class="skill-tag">Next.js</span>
+							<span class="skill-tag">Tailwind CSS</span>
 						</div>
 					</div>
-					<div>
-						<h3 class="text-xl font-semibold mb-4 text-slate-300">Backend</h3>
-						<div class="mb-4">
-							<div class="flex justify-between mb-1">
-								<span class="text-base font-medium text-slate-300"
-									>Node.js & Express</span
-								>
-								<span class="text-sm font-medium text-slate-300">80%</span>
-							</div>
-							<div class="w-full bg-slate-700 rounded-full h-2.5">
-								<div
-									class="bg-[#64ffda] h-2.5 rounded-full skill-bar-fill"
-									style="width: 0%"
-									data-width="80%"
-								></div>
-							</div>
+					<div class="skill-category p-6 glass-effect rounded-lg text-center">
+						<i
+							class="fas fa-server text-4xl text-[var(--primary-color)] mb-4"
+						></i>
+						<h3 class="text-2xl font-bold mb-4 text-slate-200">Backend</h3>
+						<div class="flex flex-wrap justify-center gap-3">
+							<span class="skill-tag">Node.js</span>
+							<span class="skill-tag">Express</span>
+							<span class="skill-tag">Python</span>
+							<span class="skill-tag">Django</span>
+							<span class="skill-tag">REST APIs</span>
+							<span class="skill-tag">GraphQL</span>
 						</div>
-						<div class="mb-4">
-							<div class="flex justify-between mb-1">
-								<span class="text-base font-medium text-slate-300"
-									>Python & Django</span
-								>
-								<span class="text-sm font-medium text-slate-300">75%</span>
-							</div>
-							<div class="w-full bg-slate-700 rounded-full h-2.5">
-								<div
-									class="bg-[#64ffda] h-2.5 rounded-full skill-bar-fill"
-									style="width: 0%"
-									data-width="75%"
-								></div>
-							</div>
-						</div>
-						<div class="mb-4">
-							<div class="flex justify-between mb-1">
-								<span class="text-base font-medium text-slate-300"
-									>Databases (SQL & NoSQL)</span
-								>
-								<span class="text-sm font-medium text-slate-300">85%</span>
-							</div>
-							<div class="w-full bg-slate-700 rounded-full h-2.5">
-								<div
-									class="bg-[#64ffda] h-2.5 rounded-full skill-bar-fill"
-									style="width: 0%"
-									data-width="85%"
-								></div>
-							</div>
+					</div>
+					<div
+						class="skill-category p-6 glass-effect rounded-lg text-center md:col-span-2 lg:col-span-1"
+					>
+						<i
+							class="fas fa-database text-4xl text-[var(--primary-color)] mb-4"
+						></i>
+						<h3 class="text-2xl font-bold mb-4 text-slate-200">
+							Databases & Tools
+						</h3>
+						<div class="flex flex-wrap justify-center gap-3">
+							<span class="skill-tag">MongoDB</span>
+							<span class="skill-tag">PostgreSQL</span>
+							<span class="skill-tag">Firebase</span>
+							<span class="skill-tag">Git & GitHub</span>
+							<span class="skill-tag">Docker</span>
+							<span class="skill-tag">Vite</span>
 						</div>
 					</div>
 				</div>
 			</section>
 
 			<!-- Contact Section -->
-			<section id="contact" class="py-20 text-center">
+			<section id="contact" class="py-20 text-center fade-in-section">
 				<h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
 				<p class="text-lg text-slate-400 max-w-xl mx-auto mb-8">
 					I'm currently looking for new opportunities and my inbox is always
@@ -475,7 +407,7 @@
 				</p>
 				<a
 					href="mailto:your.email@example.com"
-					class="bg-[#64ffda] text-[#0a192f] font-bold py-4 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300 text-lg"
+					class="bg-[var(--primary-color)] text-[var(--dark-navy)] font-bold py-4 px-8 rounded-md hover:bg-opacity-90 transition-all duration-300 text-lg shadow-lg hover:shadow-xl shadow-[var(--primary-color)]/20"
 				>
 					Say Hello
 				</a>
@@ -483,107 +415,186 @@
 		</main>
 
 		<!-- Footer -->
-		<footer class="py-6 text-center text-slate-400">
+		<footer class="py-6 text-center text-slate-400 relative z-10">
 			<p>Designed & Built by Kevin Reyes</p>
 			<p class="text-sm mt-2">&copy; 2024 Kevin Reyes. All Rights Reserved.</p>
 		</footer>
 
 		<script>
-			// Typed.js functionality
-			const words = [
-				"React applications.",
-				"RESTful APIs.",
-				"full-stack solutions.",
-				"user-friendly interfaces.",
-			];
-			let i = 0;
-			let j = 0;
-			let currentWord = "";
-			let isDeleting = false;
-			const typedTextSpan = document.getElementById("typed-text");
-
-			function type() {
-				currentWord = words[i];
-				if (isDeleting) {
-					typedTextSpan.textContent = currentWord.substring(0, j - 1);
-					j--;
-					if (j == 0) {
-						isDeleting = false;
-						i++;
-						if (i == words.length) {
-							i = 0;
-						}
-					}
-				} else {
-					typedTextSpan.textContent = currentWord.substring(0, j + 1);
-					j++;
-					if (j == currentWord.length) {
-						isDeleting = true;
-						setTimeout(() => {}, 2000); // Pause at end of word
-					}
-				}
-				const typeSpeed = isDeleting ? 50 : 150;
-				setTimeout(type, typeSpeed);
-			}
-
 			document.addEventListener("DOMContentLoaded", function () {
-				setTimeout(type, 1000);
-			});
-
-			// Mobile menu toggle
-			const mobileMenuButton = document.getElementById("mobile-menu-button");
-			const mobileMenu = document.getElementById("mobile-menu");
-			mobileMenuButton.addEventListener("click", () => {
-				mobileMenu.classList.toggle("hidden");
-			});
-
-			// Header background on scroll
-			const header = document.getElementById("header");
-			window.addEventListener("scroll", () => {
-				if (window.scrollY > 50) {
-					header.classList.add("bg-[#0a192f]", "shadow-lg");
-				} else {
-					header.classList.remove("bg-[#0a192f]", "shadow-lg");
-				}
-			});
-
-			// Animate skill bars on scroll
-			const skillBars = document.querySelectorAll(".skill-bar-fill");
-			const skillsSection = document.getElementById("skills");
-
-			const animateSkills = () => {
-				let sectionPos = skillsSection.getBoundingClientRect().top;
-				let screenPos = window.innerHeight / 1.3;
-
-				if (sectionPos < screenPos) {
-					skillBars.forEach((bar) => {
-						bar.style.width = bar.dataset.width;
+				// --- Custom Cursor ---
+				const cursorDot = document.querySelector(".cursor-dot");
+				const cursorOutline = document.querySelector(".cursor-outline");
+				window.addEventListener("mousemove", (e) => {
+					const { clientX: x, clientY: y } = e;
+					cursorDot.style.left = `${x}px`;
+					cursorDot.style.top = `${y}px`;
+					cursorOutline.style.left = `${x}px`;
+					cursorOutline.style.top = `${y}px`;
+				});
+				document.querySelectorAll("a, button, .skill-tag").forEach((el) => {
+					el.addEventListener("mouseenter", () => {
+						cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+						cursorOutline.style.borderColor = "#f87171"; // Change color on hover
 					});
-				}
-			};
-
-			window.addEventListener("scroll", animateSkills);
-
-			// Active nav link highlighting
-			const sections = document.querySelectorAll("section");
-			const navLinks = document.querySelectorAll(".nav-link");
-
-			window.addEventListener("scroll", () => {
-				let current = "";
-				sections.forEach((section) => {
-					const sectionTop = section.offsetTop;
-					if (pageYOffset >= sectionTop - 60) {
-						current = section.getAttribute("id");
-					}
+					el.addEventListener("mouseleave", () => {
+						cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+						cursorOutline.style.borderColor = "var(--primary-color)";
+					});
 				});
 
-				navLinks.forEach((link) => {
-					link.classList.remove("active", "text-[#64ffda]");
-					if (link.getAttribute("href").includes(current)) {
-						link.classList.add("active", "text-[#64ffda]");
-					} else {
-						link.classList.remove("text-[#64ffda]");
+				// --- Particle.js Background ---
+				const canvas = document.getElementById("particle-canvas");
+				const ctx = canvas.getContext("2d");
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				let particlesArray;
+
+				class Particle {
+					constructor(x, y, directionX, directionY, size, color) {
+						this.x = x;
+						this.y = y;
+						this.directionX = directionX;
+						this.directionY = directionY;
+						this.size = size;
+						this.color = color;
 					}
+					draw() {
+						ctx.beginPath();
+						ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+						ctx.fillStyle = this.color;
+						ctx.fill();
+					}
+					update() {
+						if (this.x > canvas.width || this.x < 0) {
+							this.directionX = -this.directionX;
+						}
+						if (this.y > canvas.height || this.y < 0) {
+							this.directionY = -this.directionY;
+						}
+						this.x += this.directionX;
+						this.y += this.directionY;
+						this.draw();
+					}
+				}
+
+				function initParticles() {
+					particlesArray = [];
+					let numberOfParticles = (canvas.height * canvas.width) / 9000;
+					for (let i = 0; i < numberOfParticles; i++) {
+						let size = Math.random() * 2 + 1;
+						let x =
+							Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
+						let y =
+							Math.random() * (innerHeight - size * 2 - size * 2) + size * 2;
+						let directionX = Math.random() * 0.4 - 0.2;
+						let directionY = Math.random() * 0.4 - 0.2;
+						let color = "rgba(167, 139, 250, 0.8)";
+						particlesArray.push(
+							new Particle(x, y, directionX, directionY, size, color)
+						);
+					}
+				}
+
+				function animateParticles() {
+					requestAnimationFrame(animateParticles);
+					ctx.clearRect(0, 0, innerWidth, innerHeight);
+					for (let i = 0; i < particlesArray.length; i++) {
+						particlesArray[i].update();
+					}
+				}
+
+				initParticles();
+				animateParticles();
+
+				window.addEventListener("resize", () => {
+					canvas.width = innerWidth;
+					canvas.height = innerHeight;
+					initParticles();
+				});
+
+				// --- Typed.js functionality ---
+				const words = [
+					"React applications.",
+					"RESTful APIs.",
+					"full-stack solutions.",
+					"user-friendly interfaces.",
+				];
+				let i = 0,
+					j = 0,
+					currentWord = "",
+					isDeleting = false;
+				const typedTextSpan = document.getElementById("typed-text");
+				function type() {
+					currentWord = words[i];
+					if (isDeleting) {
+						typedTextSpan.textContent = currentWord.substring(0, j - 1);
+						j--;
+						if (j === 0) {
+							isDeleting = false;
+							i = (i + 1) % words.length;
+						}
+					} else {
+						typedTextSpan.textContent = currentWord.substring(0, j + 1);
+						j++;
+						if (j === currentWord.length) {
+							isDeleting = true;
+							setTimeout(type, 2000); // Pause at end of word
+							return;
+						}
+					}
+					const typeSpeed = isDeleting ? 50 : 150;
+					setTimeout(type, typeSpeed);
+				}
+				setTimeout(type, 1000);
+
+				// --- Mobile menu toggle ---
+				const mobileMenuButton = document.getElementById("mobile-menu-button");
+				const mobileMenu = document.getElementById("mobile-menu");
+				mobileMenuButton.addEventListener("click", () => {
+					mobileMenu.classList.toggle("hidden");
+				});
+
+				// --- Header background on scroll ---
+				const header = document.getElementById("header");
+				window.addEventListener("scroll", () => {
+					header.classList.toggle("bg-[var(--dark-navy)]", window.scrollY > 50);
+					header.classList.toggle("shadow-lg", window.scrollY > 50);
+				});
+
+				// --- Scroll Animations ---
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("is-visible");
+							}
+						});
+					},
+					{ threshold: 0.1 }
+				);
+				document.querySelectorAll(".fade-in-section").forEach((section) => {
+					observer.observe(section);
+				});
+
+				// --- Active nav link highlighting ---
+				const sections = document.querySelectorAll("section[id]");
+				const navLinks = document.querySelectorAll(".nav-link");
+				window.addEventListener("scroll", () => {
+					let current = "";
+					sections.forEach((section) => {
+						const sectionTop = section.offsetTop;
+						if (pageYOffset >= sectionTop - 70) {
+							current = section.getAttribute("id");
+						}
+					});
+
+					navLinks.forEach((link) => {
+						link.classList.remove("active", "text-[var(--primary-color)]");
+						if (link.getAttribute("href").includes(current)) {
+							link.classList.add("active", "text-[var(--primary-color)]");
+						}
+					});
 				});
 			});
 		</script>

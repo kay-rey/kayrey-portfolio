@@ -176,6 +176,6 @@ docker-compose.yml
 # Cursor
 .cursorrules
 
-gitdiff.txt
+diff.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,webstorm+all,zsh
