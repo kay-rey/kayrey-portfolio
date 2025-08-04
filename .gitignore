@@ -158,4 +158,24 @@ zsdoc/data
 /tests/_output/*
 !/tests/_output/.gitkeep
 
+# Node.js
+node_modules
+
+# Python
+__pycache__
+
+# Docker
+docker-compose.yml
+
+# VSCode
+.vscode
+
+# Cursor
+.cursorrules
+
+# Cursor
+.cursorrules
+
+gitdiff.txt
+
 # End of https://www.toptal.com/developers/gitignore/api/macos,webstorm+all,zsh
