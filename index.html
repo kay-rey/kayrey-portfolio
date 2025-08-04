@@ -624,13 +624,14 @@
 					particlesArray = [];
 					let numberOfParticles = (canvas.height * canvas.width) / 9000;
 					for (let i = 0; i < numberOfParticles; i++) {
-						let size = Math.random() * 2 + 1;
+						// Increased particle size and speed
+						let size = Math.random() * 2.5 + 1;
 						let x =
 							Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
 						let y =
 							Math.random() * (innerHeight - size * 2 - size * 2) + size * 2;
-						let directionX = Math.random() * 0.4 - 0.2;
-						let directionY = Math.random() * 0.4 - 0.2;
+						let directionX = Math.random() * 1 - 0.5;
+						let directionY = Math.random() * 1 - 0.5;
 						let color = "rgba(167, 139, 250, 0.8)";
 						particlesArray.push(
 							new Particle(x, y, directionX, directionY, size, color)
@@ -640,7 +641,10 @@
 
 				function animateParticles() {
 					requestAnimationFrame(animateParticles);
-					ctx.clearRect(0, 0, innerWidth, innerHeight);
+					// This creates the "comet tail" effect
+					ctx.fillStyle = "rgba(10, 25, 47, 0.1)";
+					ctx.fillRect(0, 0, innerWidth, innerHeight);
+
 					for (let i = 0; i < particlesArray.length; i++) {
 						particlesArray[i].update();
 					}
