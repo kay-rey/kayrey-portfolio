@@ -75,7 +75,8 @@
 				width: 100%;
 				height: 100%;
 				z-index: -1;
-				opacity: 0.1;
+				/* Set initial, higher opacity */
+				opacity: 0.3;
 			}
 
 			.glass-effect {
@@ -577,12 +578,7 @@
 				canvas.height = window.innerHeight;
 				let particlesArray;
 
-				// Mouse position
-				const mouse = {
-					x: null,
-					y: null,
-					radius: 100,
-				};
+				const mouse = { x: null, y: null, radius: 100 };
 
 				window.addEventListener("mousemove", (event) => {
 					mouse.x = event.x;
@@ -605,28 +601,21 @@
 						ctx.fill();
 					}
 					update() {
-						// Check for wall collision
 						if (this.x > canvas.width || this.x < 0) {
 							this.directionX = -this.directionX;
 						}
 						if (this.y > canvas.height || this.y < 0) {
 							this.directionY = -this.directionY;
 						}
-
-						// Check for mouse collision
 						let dx = mouse.x - this.x;
 						let dy = mouse.y - this.y;
 						let distance = Math.sqrt(dx * dx + dy * dy);
 						if (distance < mouse.radius + this.size) {
-							// Push particle away from mouse
 							this.x -= dx / 15;
 							this.y -= dy / 15;
 						}
-
-						// Move particle
 						this.x += this.directionX;
 						this.y += this.directionY;
-
 						this.draw();
 					}
 				}
@@ -709,15 +698,8 @@
 					mobileMenu.classList.toggle("hidden");
 				});
 
-				// --- Header background on scroll ---
-				const header = document.getElementById("header");
-				window.addEventListener("scroll", () => {
-					header.classList.toggle("bg-[var(--dark-navy)]", window.scrollY > 50);
-					header.classList.toggle("shadow-lg", window.scrollY > 50);
-				});
-
 				// --- Scroll Animations ---
-				const observer = new IntersectionObserver(
+				const scrollObserver = new IntersectionObserver(
 					(entries) => {
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
@@ -727,18 +709,46 @@
 					},
 					{ threshold: 0.15 }
 				);
+
 				document.querySelectorAll(".scroll-animate").forEach((el) => {
-					observer.observe(el);
+					scrollObserver.observe(el);
 				});
 
-				// --- Active nav link highlighting ---
+				// --- Combined Scroll Listener ---
+				const header = document.getElementById("header");
+				const particleCanvas = document.getElementById("particle-canvas");
 				const sections = document.querySelectorAll("section[id]");
 				const navLinks = document.querySelectorAll(".nav-link");
-				window.addEventListener("scroll", () => {
+				const startParticleOpacity = 0.3;
+				const endParticleOpacity = 0.1;
+				const particleFadeEndScroll = window.innerHeight * 0.75;
+
+				function handleScroll() {
+					const scrollY = window.scrollY;
+
+					// 1. Header background
+					header.classList.toggle("bg-[var(--dark-navy)]", scrollY > 50);
+					header.classList.toggle("shadow-lg", scrollY > 50);
+
+					// 2. Particle Opacity
+					if (scrollY <= particleFadeEndScroll) {
+						const scrollProgress = scrollY / particleFadeEndScroll;
+						const newOpacity =
+							startParticleOpacity -
+							scrollProgress * (startParticleOpacity - endParticleOpacity);
+						particleCanvas.style.opacity = Math.max(
+							endParticleOpacity,
+							newOpacity
+						);
+					} else {
+						particleCanvas.style.opacity = endParticleOpacity;
+					}
+
+					// 3. Active Nav Link
 					let current = "";
 					sections.forEach((section) => {
 						const sectionTop = section.offsetTop;
-						if (pageYOffset >= sectionTop - 70) {
+						if (scrollY >= sectionTop - 70) {
 							current = section.getAttribute("id");
 						}
 					});
@@ -749,7 +759,9 @@
 							link.classList.add("active", "text-[var(--primary-color)]");
 						}
 					});
-				});
+				}
+
+				window.addEventListener("scroll", handleScroll);
 			});
 		</script>
 	</body>
