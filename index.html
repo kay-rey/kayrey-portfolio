@@ -173,6 +173,16 @@
 			#mobile-menu-button i {
 				transition: transform 0.3s ease-in-out;
 			}
+
+			/* Mobile Menu Dropdown Animation */
+			#mobile-menu {
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.5s ease-in-out;
+			}
+			#mobile-menu.open {
+				max-height: 500px; /* Adjust if menu content is taller */
+			}
 		</style>
 	</head>
 	<body class="antialiased">
@@ -207,7 +217,7 @@
 				</button>
 			</nav>
 			<!-- Mobile Menu -->
-			<div id="mobile-menu" class="hidden md:hidden bg-[var(--light-navy)] p-4">
+			<div id="mobile-menu" class="md:hidden bg-[var(--light-navy)] p-4">
 				<a href="#about" class="block py-2 text-center nav-link">About</a>
 				<a href="#projects" class="block py-2 text-center nav-link">Projects</a>
 				<a href="#skills" class="block py-2 text-center nav-link">Skills</a>
@@ -777,7 +787,7 @@
 				const menuIcon = mobileMenuButton.querySelector("i");
 
 				mobileMenuButton.addEventListener("click", () => {
-					mobileMenu.classList.toggle("hidden");
+					mobileMenu.classList.toggle("open");
 
 					if (menuIcon.classList.contains("fa-bars")) {
 						menuIcon.classList.remove("fa-bars");
