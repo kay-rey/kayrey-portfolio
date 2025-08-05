@@ -67,6 +67,11 @@
 				--lightest-slate: #ccd6f6;
 			}
 
+			html,
+			body {
+				overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
+			}
+
 			html {
 				background-color: var(--light-navy); /* Ensures notch area is filled */
 			}
@@ -84,7 +89,6 @@
 					var(--light-navy) 100%
 				);
 				color: var(--lightest-slate);
-				overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
 			}
 
 			/* Custom Cursor - Hidden by default, enabled via JS for non-touch devices */
