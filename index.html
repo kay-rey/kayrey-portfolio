@@ -19,7 +19,7 @@
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://your-domain.com/" />
-		<!-- Replace with your actual domain -->
+		<!-- TODO: Replace with your actual domain -->
 		<meta property="og:title" content="Kevin Reyes - Software Engineer" />
 		<meta
 			property="og:description"
@@ -29,12 +29,12 @@
 			property="og:image"
 			content="https://your-domain.com/assets/koalalogo.webp"
 		/>
-		<!-- Replace with a full URL to your logo -->
+		<!-- TODO: Replace with a full URL to your logo -->
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="https://your-domain.com/" />
-		<!-- Replace with your actual domain -->
+		<!-- TODO: Replace with your actual domain -->
 		<meta property="twitter:title" content="Kevin Reyes - Software Engineer" />
 		<meta
 			property="twitter:description"
@@ -44,7 +44,7 @@
 			property="twitter:image"
 			content="https://your-domain.com/assets/koalalogo.webp"
 		/>
-		<!-- Replace with a full URL to your logo -->
+		<!-- TODO: Replace with a full URL to your logo -->
 
 		<script src="https://cdn.tailwindcss.com"></script>
 		<link
@@ -98,7 +98,7 @@
 				width: 8px;
 				height: 8px;
 				background-color: var(--primary-color);
-				transition: width 0.2s, height 0.2s;
+				transition: width 0.1s, height 0.1s;
 			}
 			.cursor-outline {
 				width: 40px;
@@ -239,11 +239,17 @@
 					"https://linkedin.com/in/kevbreyes"
 				],
 				"jobTitle": "Software Engineer",
-				"alumniOf": {
-					"@type": "CollegeOrUniversity",
-					"name": "San Francisco State University",
-					"sameAs": "https://www.sfsu.edu/"
-				},
+				"alumniOf": [
+					{
+						"@type": "CollegeOrUniversity",
+						"name": "San Francisco State University",
+						"sameAs": "https://www.sfsu.edu/"
+					},
+					{
+						"@type": "CollegeOrUniversity",
+						"name": "College of the Canyons"
+					}
+				],
 				"knowsAbout": [
 					"Python",
 					"JavaScript",
@@ -273,17 +279,18 @@
 					<img
 						src="assets/koalalogo.webp"
 						alt="Kevin Reyes Logo"
-						class="h-12 transition-transform hover:scale-110"
+						class="h-10 transition-transform hover:scale-110"
 					/>
 				</a>
 				<div class="hidden md:flex items-center space-x-8">
 					<a href="#about" class="nav-link text-lg">About</a>
+					<a href="#education" class="nav-link text-lg">Education</a>
 					<a href="#projects" class="nav-link text-lg">Projects</a>
 					<a href="#skills" class="nav-link text-lg">Skills</a>
 					<a href="#contact" class="nav-link text-lg">Contact</a>
 				</div>
 				<a
-					href="path/to/your/resume.pdf"
+					href="assets/KevinReyes-Resume.pdf"
 					target="_blank"
 					class="hidden md:block bg-transparent border-2 border-[var(--primary-color)] text-[var(--primary-color)] px-4 py-2 rounded-md hover:bg-[var(--primary-color)] hover:text-[var(--dark-navy)] transition-all duration-300"
 				>
@@ -297,13 +304,16 @@
 			<div id="mobile-menu" class="md:hidden bg-[var(--dark-navy)]">
 				<div class="p-4">
 					<a href="#about" class="block py-2 text-center nav-link">About</a>
+					<a href="#education" class="block py-2 text-center nav-link"
+						>Education</a
+					>
 					<a href="#projects" class="block py-2 text-center nav-link"
 						>Projects</a
 					>
 					<a href="#skills" class="block py-2 text-center nav-link">Skills</a>
 					<a href="#contact" class="block py-2 text-center nav-link">Contact</a>
 					<a
-						href="path/to/your/resume.pdf"
+						href="assets/KevinReyes-Resume.pdf"
 						target="_blank"
 						class="block mt-4 text-center bg-[var(--primary-color)] text-[var(--dark-navy)] px-4 py-2 rounded-md"
 						>Resume</a
@@ -401,12 +411,50 @@
 							<div
 								class="absolute inset-0 bg-[var(--primary-color)] rounded-lg transform -rotate-6 transition duration-500 group-hover:rotate-0 group-hover:scale-105"
 							></div>
+							<!-- TODO: Replace this placeholder with your actual headshot image -->
 							<img
-								src="https://placehold.co/400x400/0a192f/ccd6f6?text=Kevin+Reyes"
+								src="assets/headshot.webp"
 								alt="Kevin Reyes"
 								class="relative rounded-lg shadow-xl w-full h-full object-cover transition duration-500 group-hover:scale-105"
+								onerror="this.onerror=null;this.src='https://placehold.co/400x400/0a192f/ccd6f6?text=Kevin+Reyes';"
 							/>
 						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Education Section -->
+			<section id="education" class="py-20">
+				<h2
+					class="section-title text-3xl font-bold mb-12 text-center scroll-animate animate-in-from-bottom"
+				>
+					Education
+				</h2>
+				<div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-8">
+					<div
+						class="p-6 glass-effect rounded-lg text-center scroll-animate animate-in-from-bottom"
+						style="transition-delay: 100ms"
+					>
+						<i
+							class="fas fa-graduation-cap text-4xl text-[var(--primary-color)] mb-4"
+						></i>
+						<h3 class="text-xl font-bold text-slate-200">
+							San Francisco State University
+						</h3>
+						<p class="text-slate-400">B.S. in Computer Engineering</p>
+					</div>
+					<div
+						class="p-6 glass-effect rounded-lg text-center scroll-animate animate-in-from-bottom"
+						style="transition-delay: 200ms"
+					>
+						<i
+							class="fas fa-school text-4xl text-[var(--primary-color)] mb-4"
+						></i>
+						<h3 class="text-xl font-bold text-slate-200">
+							College of the Canyons
+						</h3>
+						<p class="text-slate-400">A.S. in Mathematics</p>
+						<p class="text-slate-400">A.S. in Physics</p>
 					</div>
 				</div>
 			</section>
@@ -424,11 +472,13 @@
 					<div
 						class="project-image-container md:col-span-7 scroll-animate animate-in-from-left"
 					>
+						<!-- TODO: Replace this placeholder with your project image -->
 						<a href="#" target="_blank">
 							<img
-								src="https://placehold.co/600x400/112240/a78bfa?text=J&S+Drayage+App"
+								src="assets/jsdrayage.webp"
 								alt="J&S Drayage App Screenshot"
 								class="rounded-lg w-full"
+								onerror="this.onerror=null;this.src='https://placehold.co/600x400/112240/a78bfa?text=J&S+Drayage+App';"
 							/>
 						</a>
 					</div>
@@ -445,10 +495,10 @@
 							class="p-6 rounded-lg bg-[var(--lightest-navy)] shadow-md mb-4"
 						>
 							<p class="text-slate-400">
-								An end-to-end application to automate and optimize the daily
-								dispatch process for a commercial drayage company, solving
-								complex, multi-stop routing inefficiencies and mitigating costly
-								demurrage fees.
+								As the sole developer, I built this full-stack application from
+								the ground up to automate and optimize the daily dispatch
+								process for a commercial drayage company, solving complex
+								routing inefficiencies.
 							</p>
 						</div>
 						<ul
@@ -460,6 +510,7 @@
 							<li>Docker</li>
 						</ul>
 						<div class="flex justify-end gap-4 text-2xl text-slate-400">
+							<!-- TODO: Add live URL if available -->
 							<a
 								href="#"
 								target="_blank"
@@ -515,6 +566,7 @@
 								class="hover:text-[var(--primary-color)] transition-colors"
 								><i class="fab fa-github"></i
 							></a>
+							<!-- TODO: Add live URL if available -->
 							<a
 								href="#"
 								target="_blank"
@@ -526,11 +578,13 @@
 					<div
 						class="project-image-container md:col-span-7 md:order-last scroll-animate animate-in-from-left"
 					>
+						<!-- TODO: Replace this placeholder with your project image -->
 						<a href="https://github.com/kay-rey/clarifymed" target="_blank">
 							<img
-								src="https://placehold.co/600x400/112240/a78bfa?text=ClarifyMed"
+								src="assets/clarifymed.webp"
 								alt="ClarifyMed Screenshot"
 								class="rounded-lg w-full"
+								onerror="this.onerror=null;this.src='https://placehold.co/600x400/112240/a78bfa?text=ClarifyMed';"
 							/>
 						</a>
 					</div>
@@ -550,11 +604,13 @@
 					<div
 						class="project-image-container md:col-span-7 scroll-animate animate-in-from-left"
 					>
+						<!-- TODO: Replace this placeholder with your project image -->
 						<a href="https://devpost.com/software/catchimal" target="_blank">
 							<img
-								src="https://placehold.co/600x400/112240/a78bfa?text=Catchimal"
+								src="assets/catchimal.webp"
 								alt="Catchimal App Screenshot"
 								class="rounded-lg w-full"
+								onerror="this.onerror=null;this.src='https://placehold.co/600x400/112240/a78bfa?text=Catchimal';"
 							/>
 						</a>
 					</div>
@@ -649,9 +705,10 @@
 							target="_blank"
 						>
 							<img
-								src="https://placehold.co/600x400/112240/a78bfa?text=Personal+Portfolio"
+								src="assets/portfolioscreenshot.webp"
 								alt="Portfolio Website Screenshot"
 								class="rounded-lg w-full"
+								onerror="this.onerror=null;this.src='https://placehold.co/600x400/112240/a78bfa?text=Personal+Portfolio';"
 							/>
 						</a>
 					</div>
