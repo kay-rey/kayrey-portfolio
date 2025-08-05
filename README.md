@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d9a87863-d738-43eb-9dd2-e2a8000ae14a/deploy-status)](https://app.netlify.com/projects/kayrey-portfolio/deploys)
 # Kevin Reyes - Personal Portfolio
 
 A modern, interactive portfolio website showcasing my skills, projects, and experience as a full-stack software engineer.
