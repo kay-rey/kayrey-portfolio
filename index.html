@@ -263,6 +263,16 @@
 			#header.scrolled {
 				background-color: var(--light-navy) !important;
 			}
+			#header::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: env(safe-area-inset-top);
+				background-color: var(--light-navy);
+				z-index: -1;
+			}
 		</style>
 		<!-- Structured Data -->
 		<script type="application/ld+json">
@@ -308,8 +318,12 @@
 		<!-- Header -->
 		<header
 			id="header"
-			class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[var(--light-navy)]"
-			style="padding-top: env(safe-area-inset-top)"
+			class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+			style="
+				padding-top: env(safe-area-inset-top);
+				margin-top: 0;
+				background-color: var(--light-navy);
+			"
 		>
 			<nav
 				class="container mx-auto px-6 py-4 flex justify-between items-center"
@@ -361,11 +375,15 @@
 			</div>
 		</header>
 
-		<main class="container mx-auto px-6 relative z-10">
+		<main
+			class="container mx-auto px-6 relative z-10"
+			style="margin-top: 0; padding-top: 0"
+		>
 			<!-- Hero Section -->
 			<section
 				id="home"
-				class="min-h-screen flex flex-col justify-center items-start pt-20"
+				class="min-h-screen flex flex-col justify-center items-start"
+				style="padding-top: calc(80px + env(safe-area-inset-top))"
 			>
 				<p
 					class="text-[var(--primary-color)] text-lg mb-4 scroll-animate animate-in-from-bottom"
