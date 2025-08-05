@@ -258,10 +258,10 @@
 
 			/* iOS Safe Area Fixes */
 			#header {
-				background-color: var(--light-navy);
+				background-color: var(--light-navy) !important;
 			}
 			#header.scrolled {
-				background-color: var(--light-navy);
+				background-color: var(--light-navy) !important;
 			}
 		</style>
 		<!-- Structured Data -->
@@ -308,7 +308,7 @@
 		<!-- Header -->
 		<header
 			id="header"
-			class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+			class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[var(--light-navy)]"
 			style="padding-top: env(safe-area-inset-top)"
 		>
 			<nav
@@ -1053,7 +1053,6 @@
 					const scrollY = window.scrollY;
 
 					// 1. Header background
-					header.classList.toggle("bg-[var(--light-navy)]", scrollY > 50);
 					header.classList.toggle("shadow-lg", scrollY > 50);
 
 					// 2. Particle Opacity
