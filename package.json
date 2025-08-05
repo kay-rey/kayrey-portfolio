@@ -1,0 +1,24 @@
+{
+  "name": "kayrey",
+  "version": "1.0.0",
+  "description": "[![Netlify Status](https://api.netlify.com/api/v1/badges/d9a87863-d738-43eb-9dd2-e2a8000ae14a/deploy-status)](https://app.netlify.com/projects/kayrey-portfolio/deploys) # Kevin Reyes - Personal Portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kay-rey/kayrey-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kay-rey/kayrey-portfolio/issues"
+  },
+  "homepage": "https://github.com/kay-rey/kayrey-portfolio#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
