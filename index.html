@@ -6,6 +6,10 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 		/>
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
 		<title>Kevin Reyes - Software Engineer</title>
 
 		<!-- SEO Meta Tags -->
@@ -102,6 +106,13 @@
 					var(--light-navy) 100%
 				);
 				color: var(--lightest-slate);
+				/* Fix for iPhone Safari white area at top */
+				padding-top: env(safe-area-inset-top);
+				padding-left: env(safe-area-inset-left);
+				padding-right: env(safe-area-inset-right);
+				padding-bottom: env(safe-area-inset-bottom);
+				min-height: 100vh;
+				min-height: -webkit-fill-available;
 			}
 
 			/* Custom Cursor - Hidden by default, enabled via JS for non-touch devices */
