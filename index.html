@@ -85,6 +85,10 @@
 				--lightest-slate: #ccd6f6;
 			}
 
+			html,
+			body {
+				overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
+			}
 			body {
 				font-family: "Inter", sans-serif;
 				background-color: var(--light-navy);
@@ -98,7 +102,6 @@
 					var(--light-navy) 100%
 				);
 				color: var(--lightest-slate);
-				overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
 			}
 
 			/* Custom Cursor - Hidden by default, enabled via JS for non-touch devices */
