@@ -44,25 +44,7 @@
 			property="twitter:image"
 			content="https://kevbreyes.com/assets/koalalogo.webp"
 		/>
-		<!-- Favicon -->
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="assets/favicons/apple-touch-icon.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="assets/favicons/favicon-32x32.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="assets/favicons/favicon-16x16.png"
-		/>
-		<link rel="manifest" href="site.webmanifest" />
+
 		<link href="dist/output.css" rel="stylesheet" />
 		<link
 			rel="stylesheet"
@@ -96,7 +78,7 @@
 
 			body {
 				font-family: "Inter", sans-serif;
-				background-color: var(--light-navy);
+				background-color: transparent;
 				/* Swapped background colors for a lighter hero */
 				background-image: linear-gradient(
 					180deg,
@@ -107,16 +89,6 @@
 					var(--light-navy) 100%
 				);
 				color: var(--lightest-slate);
-				padding-top: calc(
-					6rem + env(safe-area-inset-top)
-				); /* 6rem is 96px, the original pt-24 */
-			}
-			
-			#header {
-				/* Add padding to the header to account for the notch and side insets */
-				padding-top: env(safe-area-inset-top);
-				padding-left: env(safe-area-inset-left);
-				padding-right: env(safe-area-inset-right);
 			}
 
 			/* Custom Cursor - Hidden by default, enabled via JS for non-touch devices */
@@ -298,7 +270,7 @@
 			}
 		</script>
 	</head>
-	<body class="antialiased">
+	<body class="antialiased pt-24">
 		<div class="cursor-dot"></div>
 		<div class="cursor-outline"></div>
 		<canvas id="particle-canvas"></canvas>
@@ -362,7 +334,7 @@
 			<!-- Hero Section -->
 			<section
 				id="home"
-				class="min-h-screen flex flex-col justify-center items-start"
+				class="min-h-screen flex flex-col justify-start items-start pt-20 md:pt-32"
 			>
 				<p
 					class="text-[var(--primary-color)] text-lg mb-4 scroll-animate animate-in-from-bottom"
