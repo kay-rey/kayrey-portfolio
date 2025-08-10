@@ -74,7 +74,38 @@
 			sizes="16x16"
 			href="/assets/favicons/favicon-16x16.png"
 		/>
+		<link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" />
+		<link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png" />
 		<link rel="manifest" href="/site.webmanifest" />
+
+		<!-- PWA Meta Tags -->
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
+		<meta name="apple-mobile-web-app-title" content="Kevin Reyes" />
+		<meta name="application-name" content="Kevin Reyes Portfolio" />
+		<meta name="msapplication-TileColor" content="#112240" />
+		<meta name="msapplication-config" content="/browserconfig.xml" />
+
+		<!-- Service Worker Registration -->
+		<script>
+			if ("serviceWorker" in navigator) {
+				window.addEventListener("load", () => {
+					navigator.serviceWorker
+						.register("/sw.js")
+						.then((registration) => {
+							console.log("SW registered: ", registration);
+						})
+						.catch((registrationError) => {
+							console.log("SW registration failed: ", registrationError);
+						});
+				});
+			}
+		</script>
+
 		<style>
 			:root {
 				--primary-color: #a78bfa; /* Vibrant Purple */

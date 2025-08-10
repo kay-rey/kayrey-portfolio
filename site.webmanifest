@@ -1,11 +1,20 @@
 {
     "name": "Kevin Reyes - Software Engineer",
     "short_name": "Kevin Reyes",
-    "icons": [
-        { "src": "/assets/favicons/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
-        { "src": "/assets/favicons/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
-    ],
+    "description": "Portfolio of Kevin Reyes, a full-stack software engineer",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
     "theme_color": "#112240",
     "background_color": "#112240",
-    "display": "standalone"
+    "categories": ["portfolio", "business", "technology"],
+    "lang": "en",
+    "icons": [
+        { "src": "/assets/favicons/favicon-16x16.png", "sizes": "16x16", "type": "image/png" },
+        { "src": "/assets/favicons/favicon-32x32.png", "sizes": "32x32", "type": "image/png" },
+        { "src": "/assets/favicons/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+        { "src": "/assets/favicons/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+        { "src": "/assets/favicons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+    ]
 }
