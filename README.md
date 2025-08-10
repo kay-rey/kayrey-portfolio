@@ -1,156 +1,177 @@
+# Kevin Reyes - Software Engineer Portfolio
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d9a87863-d738-43eb-9dd2-e2a8000ae14a/deploy-status)](https://app.netlify.com/projects/kayrey-portfolio/deploys)
-# Kevin Reyes - Personal Portfolio
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Website](https://img.shields.io/badge/Website-Live-brightgreen.svg)](https://kevbreyes.com)
 
-A modern, interactive portfolio website showcasing my skills, projects, and experience as a full-stack software engineer.
+**[🌐 View Live Portfolio →](https://kevbreyes.com)**
 
-## 🚀 Live Demo
+![Portfolio Screenshot](assets/portfolioscreenshot.webp)
 
-[View Portfolio](https://your-portfolio-url.com)
+> "Building digital experiences that make a difference, one line of code at a time."
+
+A modern, responsive portfolio website showcasing my skills, projects, and professional journey as a software engineer. Built with clean, semantic HTML, modern CSS, and vanilla JavaScript for optimal performance and maintainability.
 
 ## ✨ Features
 
-- **Responsive Design**: Fully responsive layout that works seamlessly across all devices
-- **Interactive Animations**: Custom scroll-triggered animations and smooth transitions
-- **Dynamic Particle Background**: Animated particle system for visual appeal
-- **Custom Cursor**: Interactive cursor with hover effects and smooth tracking
-- **Modern UI/UX**: Clean, professional design with glass morphism effects
-- **Performance Optimized**: Optimized animations and efficient rendering
-- **Accessibility**: Proper semantic HTML and keyboard navigation support
+- **Responsive Design**: Mobile-first approach with seamless desktop experience
+- **Interactive Elements**: Custom cursor, particle background, and smooth scroll animations
+- **Progressive Web App**: Service worker for offline functionality and app-like experience
+- **Performance Optimized**: Optimized images, efficient CSS, and minimal JavaScript
+- **Accessibility Focused**: Semantic HTML, proper ARIA labels, and keyboard navigation
+- **Modern UI/UX**: Clean typography, smooth transitions, and intuitive navigation
 
 ## 🛠️ Technologies Used
 
 ### Frontend
 
-- **HTML5**: Semantic markup and modern web standards
+- **HTML5**: Semantic markup and structured content
+- **CSS3**: Custom properties, animations, and responsive design
 - **Tailwind CSS**: Utility-first CSS framework for rapid development
-- **JavaScript (ES6+)**: Vanilla JavaScript for interactivity and animations
-- **Font Awesome**: Icon library for consistent visual elements
+- **JavaScript (ES6+)**: Vanilla JS for interactivity and animations
 
-### Key Features
+### Build Tools
 
-- **CSS Custom Properties**: Centralized color theming and design system
-- **Intersection Observer API**: Performance-optimized scroll animations
-- **Canvas API**: Custom particle animation system
-- **CSS Grid & Flexbox**: Modern layout techniques
-- **CSS Animations**: Smooth transitions and hover effects
+- **Tailwind CSS CLI**: For CSS compilation and optimization
+- **Node.js**: Package management and build scripts
 
-## 📁 Project Structure
+### Deployment
 
-```
-portfolio/
-├── index.html          # Main HTML file
-├── README.md           # Project documentation
-└── assets/             # Images and static assets
-```
+- **Netlify**: Continuous deployment and hosting
+- **Git**: Version control and collaboration
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- No build tools or dependencies required
+- Node.js (v14 or higher)
+- npm or yarn package manager
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository
 
    ```bash
    git clone https://github.com/kay-rey/kayrey-portfolio.git
+   cd kayrey-portfolio
    ```
 
-2. Open `index.html` in your browser or serve it using a local server:
+2. Install dependencies
 
    ```bash
-   # Using Python
-   python -m http.server 8000
-
-   # Using Node.js
-   npx serve .
+   npm install
    ```
 
-3. Visit `http://localhost:8000` in your browser
+3. Build the CSS
+
+   ```bash
+   npm run build
+   ```
+
+4. Open `index.html` in your browser or serve locally
+
+### Development
+
+- **Build CSS**: `npm run build`
+- **Watch for changes**: `npm run build` (run manually as needed)
+
+## 📁 Project Structure
+
+```
+kayrey-portfolio/
+├── assets/                 # Images, icons, and media files
+│   ├── favicons/          # Favicon and app icons
+│   ├── images/            # Project screenshots and graphics
+│   └── documents/         # Resume and other documents
+├── dist/                  # Compiled CSS output
+├── src/                   # Source files
+│   └── input.css          # Tailwind CSS input file
+├── index.html             # Main HTML file
+├── sw.js                  # Service worker for PWA
+├── site.webmanifest       # Web app manifest
+├── browserconfig.xml      # Microsoft Edge configuration
+├── tailwind.config.js     # Tailwind CSS configuration
+├── package.json           # Dependencies and scripts
+└── README.md              # Project documentation
+```
 
 ## 🎨 Design System
 
 ### Color Palette
 
-- **Primary**: `#a78bfa` (Vibrant Purple)
-- **Dark Navy**: `#0a192f` (Background)
-- **Light Navy**: `#112240` (Secondary Background)
-- **Lightest Navy**: `#233554` (Cards)
-- **Slate**: `#8892b0` (Text)
-- **Light Slate**: `#a8b2d1` (Secondary Text)
-- **Lightest Slate**: `#ccd6f6` (Primary Text)
+```css
+:root {
+	--primary-color: #a78bfa; /* Vibrant Purple */
+	--dark-navy: #081425; /* Dark Navy */
+	--light-navy: #112240; /* Light Navy */
+	--lightest-navy: #233554; /* Lightest Navy */
+	--slate: #8892b0; /* Slate */
+	--light-slate: #a8b2d1; /* Light Slate */
+	--lightest-slate: #ccd6f6; /* Lightest Slate */
+}
+```
 
 ### Typography
 
-- **Font Family**: Inter (Google Fonts)
-- **Weights**: 400, 500, 600, 700
-
-## 🔧 Customization
-
-### Adding New Projects
-
-1. Locate the projects section in `index.html`
-2. Copy the existing project structure
-3. Update the content, links, and technologies
-4. Add appropriate images and descriptions
-
-### Modifying Colors
-
-1. Update CSS custom properties in the `:root` selector
-2. Colors are centralized for easy theming
-
-### Adding Animations
-
-1. Use the existing `scroll-animate` classes
-2. Add custom CSS animations as needed
-3. Ensure performance with proper cleanup
+- **Primary Font**: Inter (Google Fonts)
+- **Weights**: 400 (Regular), 500 (Medium), 600 (Semi-bold), 700 (Bold)
+- **Hierarchy**: Clear visual hierarchy with consistent spacing
 
 ## 📱 Responsive Design
 
-The portfolio is built with a mobile-first approach and includes:
+- **Mobile First**: Designed for mobile devices first, then enhanced for larger screens
+- **Breakpoints**: Responsive grid system using Tailwind CSS utilities
+- **Touch Friendly**: Optimized for touch interactions on mobile devices
+- **Flexible Layout**: Adaptive grid system that works across all device sizes
 
-- Responsive grid layouts
-- Flexible typography scaling
-- Touch-friendly navigation
-- Optimized mobile menu
-- Adaptive spacing and sizing
+## ⚡ Performance Features
 
-## 🎯 Performance Optimizations
+- **Optimized Images**: WebP format with fallbacks for broader compatibility
+- **Efficient CSS**: Tailwind CSS with purged unused styles
+- **Minimal JavaScript**: Vanilla JS without heavy frameworks
+- **Service Worker**: Caching strategy for improved loading times
+- **Lazy Loading**: Images and content loaded as needed
 
-- **Lazy Loading**: Images and animations load on demand
-- **Efficient Animations**: CSS transforms and opacity for smooth performance
-- **Minimal Dependencies**: Only essential external libraries
-- **Optimized Assets**: Compressed images and efficient code structure
+## 🔧 Development Workflow
 
-## 🔍 Browser Support
+1. **Local Development**: Build CSS and test locally
+2. **Version Control**: Commit changes with descriptive messages
+3. **Deployment**: Automatic deployment via Netlify on push to main branch
+4. **Testing**: Cross-browser testing and responsive design validation
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+## 🌐 Browser Support
+
+- **Modern Browsers**: Chrome, Firefox, Safari, Edge (latest versions)
+- **Mobile Browsers**: iOS Safari, Chrome Mobile, Samsung Internet
+- **Progressive Enhancement**: Core functionality works in all browsers
+
+## 📊 Project Highlights
+
+### Featured Projects
+
+- **ClarifyMed**: AI-powered medical documentation tool (Next.js, React, MongoDB)
+- **Catchimal**: Award-winning sustainability app (HTML, CSS, JavaScript)
+- **Personal Portfolio**: This website showcasing modern web development
+
+### Key Achievements
+
+- **Hackathon Winner**: "Best Hack for Sustainability" at Catchimal project
+- **48-Hour MVP**: Rapid development and deployment capabilities
+- **Team Leadership**: Experience leading development teams and coordinating projects
+
+## 📞 Contact & Connect
+
+- **Portfolio**: [kevbreyes.com](https://kevbreyes.com)
+- **GitHub**: [@kay-rey](https://github.com/kay-rey)
+- **LinkedIn**: [kevbreyes](https://linkedin.com/in/kevbreyes)
+- **Resume**: [Download PDF](assets/KevinReyes-Resume.pdf)
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-While this is a personal portfolio, suggestions and feedback are welcome! Feel free to:
-
-- Report bugs or issues
-- Suggest improvements
-- Share design ideas
-
-## 📞 Contact
-
-
-- **GitHub**: [https://github.com/kay-rey]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-**Built with ❤️ by Kevin Reyes**
+**Built with ❤️ and ☕ by Kevin Reyes**
 
-_Full-stack developer passionate about creating elegant, user-friendly software solutions._
+_Last updated: December 2024_
