@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://kevbreyes.com/</loc>
+    <lastmod>2025-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://kevbreyes.com/assets/koalalogo.webp</image:loc>
+      <image:title>Kevin Reyes - Software Engineer Logo</image:title>
+      <image:caption>Kevin Reyes, Software Engineer based in Santa Clarita, CA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://kevbreyes.com/assets/headshot.webp</image:loc>
+      <image:title>Kevin Reyes Professional Headshot</image:title>
+      <image:caption>Kevin Reyes, Full-Stack Software Engineer in Santa Clarita, California</image:caption>
+    </image:image>
+  </url>
+</urlset>
