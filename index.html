@@ -909,8 +909,15 @@
 		<!-- Footer -->
 		<footer class="py-6 text-center text-slate-400 relative z-10">
 			<p>Designed & Built by Kevin Reyes</p>
-			<p class="text-sm mt-2">&copy; 2024 Kevin Reyes. All Rights Reserved.</p>
+			<p class="text-sm mt-2">
+				&copy; <span id="current-year"></span> Kevin Reyes. All Rights Reserved.
+			</p>
 		</footer>
+
+		<script>
+			document.getElementById("current-year").textContent =
+				new Date().getFullYear();
+		</script>
 
 		<!-- Hidden Local SEO Content -->
 		<div style="display: none">
