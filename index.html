@@ -124,10 +124,32 @@
 						.register("/sw.js")
 						.then((registration) => {
 							console.log("SW registered: ", registration);
+							
+							// Browser automatically checks for SW updates on each page load
+							// We just need to handle when an update is found
+							registration.addEventListener("updatefound", () => {
+								const newWorker = registration.installing;
+								
+								newWorker.addEventListener("statechange", () => {
+									if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+										// New service worker is available, reload to use it
+										window.location.reload();
+									}
+								});
+							});
 						})
 						.catch((registrationError) => {
 							console.log("SW registration failed: ", registrationError);
 						});
+					
+					// Listen for controller change (when new SW takes control)
+					let refreshing = false;
+					navigator.serviceWorker.addEventListener("controllerchange", () => {
+						if (!refreshing) {
+							refreshing = true;
+							window.location.reload();
+						}
+					});
 				});
 			}
 		</script>
