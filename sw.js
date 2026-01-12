@@ -1,6 +1,7 @@
-// Update this version number when you deploy changes
-const CACHE_NAME = "kevin-reyes-portfolio-v3";
-const STATIC_CACHE_NAME = "kevin-reyes-portfolio-static-v3";
+// Version numbers are automatically updated by the build script
+// NOTE: HTML content uses network-first strategy, so it's always fresh.
+const CACHE_NAME = "kevin-reyes-portfolio-v11083128";
+const STATIC_CACHE_NAME = "kevin-reyes-portfolio-static-v11083128";
 
 const urlsToCache = [
 	"/dist/output.css",
