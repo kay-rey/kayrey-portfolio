@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 // Generate a shorter version based on timestamp (last 8 digits)
 // This ensures uniqueness while keeping it readable
@@ -7,8 +7,8 @@ const timestamp = Date.now().toString();
 const version = `v${timestamp.slice(-8)}`;
 
 // Read the service worker file
-const swPath = path.join(__dirname, 'sw.js');
-let swContent = fs.readFileSync(swPath, 'utf8');
+const swPath = path.join(__dirname, "sw.js");
+let swContent = fs.readFileSync(swPath, "utf8");
 
 // Replace version numbers (handles v followed by numbers or timestamp)
 swContent = swContent.replace(
@@ -21,5 +21,5 @@ swContent = swContent.replace(
 );
 
 // Write back to file
-fs.writeFileSync(swPath, swContent, 'utf8');
+fs.writeFileSync(swPath, swContent, "utf8");
 console.log(`✅ Service worker version updated to ${version}`);
